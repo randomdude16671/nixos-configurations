@@ -1,0 +1,11 @@
+cursor-style = block
+shell-integration = zsh
+shell-integration-features = no-cursor,no-sudo
+window-decoration = server
+mouse-hide-while-typing = true
+theme = catppuccin-mocha
+font-family = "ZedMono Nerd Font"
+font-size = 14
+window-padding-x = 0, 0
+window-padding-y = 0, 0
+font-synthetic-style = false
