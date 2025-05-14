@@ -18,6 +18,10 @@
           command = "--no-startup-id setxkbmap 'caps:swapescape'";
           always = true;
         }
+        {
+          command = "--no-startup-id /home/ghost/scripts/i3-tile.sh";
+          always = true;
+        }
       ];
       keybindings = let
         modifier = config.xsession.windowManager.i3.config.modifier;

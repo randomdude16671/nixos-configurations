@@ -16,7 +16,7 @@
     };
     gc = {
       dates = "weekly";
-      automatic = true; 
-    }; 
+      automatic = true;
+    };
   };
 }

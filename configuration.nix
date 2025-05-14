@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./modules/nixos
-    inputs.home-manager.nixosModules.home-manager 
+    inputs.home-manager.nixosModules.home-manager
     inputs.stylix.nixosModules.stylix
     ./hardware-configuration.nix
   ];

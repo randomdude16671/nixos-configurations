@@ -1,38 +1,42 @@
-# devTools module for my developer tools; 
-{config, lib, pkgs, ...}: 
-with lib;
-
-let cfg = config.ghost.devTools; 
+# devTools module for my developer tools;
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
+  cfg = config.ghost.devTools;
   mini-build = pkgs.buildGoModule {
     pname = "mini-build";
-    version = "0.1.0"; 
+    version = "0.1.0";
 
     src = pkgs.fetchFromGitHub {
-      owner = "randomdude16671"; 
-      repo = "mini-build"; 
-      rev = "main"; 
-      sha256 = "LIopYIm2sTrEhjtcXnXrtfleisJ5RBPiSD+ZZeXlQk4="; 
+      owner = "randomdude16671";
+      repo = "mini-build";
+      rev = "main";
+      sha256 = "LIopYIm2sTrEhjtcXnXrtfleisJ5RBPiSD+ZZeXlQk4=";
     };
-    vendorHash = null; 
+    vendorHash = null;
     meta = with lib; {
-      description = "A super small build system written mainly for personal use."; 
-      homepage = "https://github.com/randomdude16671/mini-build"; platforms = platforms.linux; 
+      description = "A super small build system written mainly for personal use.";
+      homepage = "https://github.com/randomdude16671/mini-build";
+      platforms = platforms.linux;
       license = licenses.mit;
-    }; 
+    };
   };
-in
-{
+in {
   options.ghost.devTools.enable = lib.mkOption {
-    type = lib.types.bool; 
-    default = false; 
-    description = "Enable Ghost's Dev Tools.";  
+    type = lib.types.bool;
+    default = false;
+    description = "Enable Ghost's Dev Tools.";
   };
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      mini-build 
+      mini-build
       neovim
-      sesh 
+      sesh
       zoxide
       btop
       fd
@@ -46,68 +50,67 @@ in
       tmux
       ripgrep
       gh
-    ]; 
+    ];
 
-    # smart cd command 
+    # smart cd command
     programs.zoxide = {
-      enable = true; 
-      enableZshIntegration = true; 
-    }; 
-
-    home.file.".zsh/ctp_mocha.zsh".source = ./ctp_mocha.zsh; 
-
-    xdg.configFile = {
-      # terminal 
-      "ghostty/config" = {
-        source = ./ghostty-config; 
-      }; 
-      # multiplexer
-      "tmux/tmux.conf" = {
-        source = ./tmux.conf; 
-      }; 
-
-      # cat alternative 
-      "bat/themes/Catppuccin_Mocha.tmTheme" = {
-        source = ./catppuccin_bat.tmTheme; 
-      }; 
-
-      "bat/config" = {
-        text = '' 
-        --theme='Catppuccin_Mocha'
-        ''; 
-      }; 
+      enable = true;
+      enableZshIntegration = true;
     };
 
-    # for auto dev-shell (i use) 
-    programs.direnv = {
-      enable = true; 
-      enableZshIntegration = true;
-      silent = true; 
-      nix-direnv = {
-        enable = true; 
-        package = pkgs.nix-direnv; 
-      }; 
-    }; 
+    home.file.".zsh/ctp_mocha.zsh".source = ./ctp_mocha.zsh;
 
-    # fuzzy finder 
+    home.sessionVariables = {
+      DIRENV_WARN_TIMEOUT = 0;
+    };
+    xdg.configFile = {
+      # terminal
+      "ghostty/config" = {
+        source = ./ghostty-config;
+      };
+      # multiplexer
+      "tmux/tmux.conf" = {
+        source = ./tmux.conf;
+      };
+
+      # cat alternative
+      "bat/themes/Catppuccin_Mocha.tmTheme" = {
+        source = ./catppuccin_bat.tmTheme;
+      };
+
+      "bat/config" = {
+        text = ''
+          --theme='Catppuccin_Mocha'
+        '';
+      };
+    };
+    home.file.".zsh/git-aliases.zsh".source = ./git-zsh.zsh;
+
+    # for auto dev-shell (i use)
+    programs.direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      silent = false;
+      nix-direnv = {
+        enable = true;
+        package = pkgs.nix-direnv;
+      };
+    };
+
+    # fuzzy finder
     programs.fzf = {
-      enable = true; 
-      enableZshIntegration = true; 
+      enable = true;
+      enableZshIntegration = true;
       tmux = {
-        enableShellIntegration = true; 
-      }; 
-    }; 
-    
-    # shell 
+        enableShellIntegration = true;
+      };
+    };
+
+    # shell
     programs.zsh = {
-      enable = true; 
-      oh-my-zsh = {
-        enable = true; 
-        theme = "robbyrussell"; 
-        plugins = [ "git" "sudo" ]; 
-      }; 
-      initExtra = '' 
-        bindkey -v 
+      enable = true;
+      initExtraFirst = ''
+        bindkey -v
         source ~/.zsh/ctp_mocha.zsh
         export FZF_DEFAULT_OPTS=" \
         --color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
@@ -115,23 +118,57 @@ in
         --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
         --color=selected-bg:#45475A \
         --color=border:#313244,label:#CDD6F4"
-        . <(fzf --zsh) 
+        . <(fzf --zsh)
 
-        bindkey -s '^k' "~/scripts/sesh_start.sh\n" 
-        bindkey -sv '^k'  "~/scripts/sesh_start.sh\n" 
-      ''; 
-      syntaxHighlighting.enable = true; 
-      autocd = true; 
+        bindkey -s '^k' "~/scripts/sesh_start.sh\n"
+        bindkey -sv '^k'  "~/scripts/sesh_start.sh\n"
+        source ~/.zsh/git-aliases.zsh
+      '';
+
+      initExtra = ''
+        autoload -Uz vcs_info
+
+        zstyle ':vcs_info:git:*' formats '%F{blue}git:(%F{red}%b%F{blue})%f %u%c'
+        zstyle ':vcs_info:git:*' actionformats '%F{blue}git:(%F{red}%b|%a%F{blue})%f %u%c'
+        zstyle ':vcs_info:git:*' check-for-changes true
+
+        zstyle ':vcs_info:git:*' unstagedstr '%F{yellow}✗%f '
+        zstyle ':vcs_info:git:*' stagedstr '%F{green}✓%f '
+
+        zstyle ':vcs_info:*' enable git
+
+        precmd() { vcs_info }
+
+        prompt_dir() {
+          if [[ -n "$TMUX" ]]; then
+            echo "%F{cyan}%B$(basename $PWD)%b%f"
+          else
+            echo "%F{cyan}%B%c%b%f"
+          fi
+        }
+
+        prompt_arrow() {
+          [[ $? -eq 0 ]] && echo "%F{green}➜%f" || echo "%F{red}➜%f"
+        }
+
+        setopt PROMPT_SUBST
+
+        PROMPT='$(prompt_arrow)  $(prompt_dir) ''${vcs_info_msg_0_}'
+      '';
+
+      syntaxHighlighting.enable = true;
+      autocd = true;
       shellAliases = {
-        "gs" = "git status"; 
-        "mb" = "mini-build"; 
-        "cat" = "bat"; 
-        "cd" = "z"; 
+        "gs" = "git status";
+        "mb" = "mini-build";
+        "ls" = "eza --all";
+        "cat" = "bat";
+        "cd" = "z";
         "cl" = "clear -x"; # -x keeps the scrollback
-        "vi" = "nvim"; 
-        "vim" = "nvim"; 
-        "grep" = "rg"; 
+        "vi" = "nvim";
+        "vim" = "nvim";
+        "grep" = "rg";
       };
-    }; 
-  }; 
+    };
+  };
 }

@@ -12,5 +12,6 @@ _: {
     ./user.nix
     ./locale-things.nix
     ./boot.nix
+    ./hardware.nix
   ];
 }

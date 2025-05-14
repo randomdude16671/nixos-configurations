@@ -1,12 +1,12 @@
 {
-pkgs,
-inputs,
-...
+  pkgs,
+  inputs,
+  ...
 }: {
   home-manager.backupFileExtension = "hmBak";
   home-manager.users.ghost = {
     home.packages = with pkgs; [
-      # all gui apps 
+      # all gui apps
       inputs.zen-browser.packages."${system}".beta
       inputs.ghostty.packages.${system}.default
       rofi
@@ -20,7 +20,10 @@ inputs,
       ./modules/home-manager
       ./modules/ghost
     ];
-    ghost.devTools.enable = true;  
+
+    ghost.devTools.enable = true;
+    ghost.scripts.enable = true;
+
     home.stateVersion = "24.11";
     programs.home-manager.enable = true; # let it cook bro.
   };
