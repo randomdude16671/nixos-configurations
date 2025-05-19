@@ -15,7 +15,7 @@ with lib; let
       owner = "randomdude16671";
       repo = "mini-build";
       rev = "main";
-      sha256 = "LIopYIm2sTrEhjtcXnXrtfleisJ5RBPiSD+ZZeXlQk4=";
+      sha256 = "O7YFklyX4bcDwn+LbY5p0F7ltDoLHfUU7mC0/Lz8f0M=";
     };
     vendorHash = null;
     meta = with lib; {
@@ -35,6 +35,7 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       mini-build
+      bat
       neovim
       sesh
       zoxide
@@ -148,7 +149,7 @@ in {
         }
 
         prompt_arrow() {
-          [[ $? -eq 0 ]] && echo "%F{green}➜%f" || echo "%F{red}➜%f"
+          [[ $? -eq 0 ]] && echo "%F{green}>%f" || echo "%F{red}<%f"
         }
 
         setopt PROMPT_SUBST
@@ -161,7 +162,7 @@ in {
       shellAliases = {
         "gs" = "git status";
         "mb" = "mini-build";
-        "ls" = "eza --all";
+        "ls" = "eza";
         "cat" = "bat";
         "cd" = "z";
         "cl" = "clear -x"; # -x keeps the scrollback
