@@ -10,7 +10,7 @@
     config = {
       modifier = "Mod4";
       fonts = {
-        names = ["ZedMono Nerd Font"];
+        names = ["Iosevka Nerd Font"];
         style = "Regular";
       };
       startup = [
@@ -50,14 +50,15 @@
         titlebar = false;
       };
     };
+    # more reproducible now with ${pkgs.*}/bin/* 
     extraConfig = ''
       bar {
-        font pango:ZedMono Nerd Font 10
+        font pango:Iosevka Nerd Font 10 
         mode dock
         hidden_state hide
         position bottom
-        status_command /nix/store/s1g5xragmhfynvkss43fsxk22zkhm9lf-i3status-2.15/bin/i3status
-        i3bar_command /nix/store/g4frpvn0jp6hhkrjmc7z0s4nrz30rdnn-i3-4.24/bin/i3bar
+        status_command ${pkgs.i3status}/bin/i3status 
+        i3bar_command ${pkgs.i3}/bin/i3bar
         workspace_buttons yes
         strip_workspace_numbers no
         tray_output primary

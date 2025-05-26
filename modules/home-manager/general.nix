@@ -1,6 +1,6 @@
 {
   dconf = {
-    enable = true;
+    enable = false;
   };
 
   # for stylix to generate theme for.
@@ -10,4 +10,5 @@
   stylix.targets.i3.enable = false;
   stylix.targets.qt.enable = false;
   stylix.targets.fzf.enable = false;
+  stylix.targets.ghostty.enable = false;
 }

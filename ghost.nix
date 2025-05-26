@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   home-manager.backupFileExtension = "hmBak";
@@ -8,10 +9,9 @@
     home.packages = with pkgs; [
       # all gui apps
       inputs.zen-browser.packages."${system}".beta
-      inputs.ghostty.packages.${system}.default
-      rofi
       authenticator
       i3status
+      rofi
       vesktop
       nsxiv
       xclip
@@ -20,9 +20,12 @@
       ./modules/home-manager
       ./modules/ghost
     ];
-
-    ghost.devTools.enable = true;
-    ghost.scripts.enable = true;
+    gtk.enable = true; 
+    # yes these are my own modules
+    ghost = {
+      devTools.enable = true;
+      scripts.enable = true;     
+    }; 
 
     home.stateVersion = "24.11";
     programs.home-manager.enable = true; # let it cook bro.

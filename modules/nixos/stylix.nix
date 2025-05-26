@@ -22,3 +22,4 @@
   stylix.image = ../wallpapers/to.jpg;
   stylix.polarity = "dark";
 }
+

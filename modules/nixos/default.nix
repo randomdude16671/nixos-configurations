@@ -1,9 +1,11 @@
 _: {
   imports = [
     ./bluetooth.nix
-    ./pipewire-wireplumber.nix
+    ./gnupg.nix
+    ./fonts.nix
     ./systemPackages.nix
     ./stylix.nix
+    ./pipewire-wireplumber.nix
     ./nix.nix
     ./dm-de.nix
     ./security.nix

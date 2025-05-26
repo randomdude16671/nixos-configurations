@@ -15,7 +15,7 @@ with lib; let
       owner = "randomdude16671";
       repo = "mini-build";
       rev = "main";
-      sha256 = "O7YFklyX4bcDwn+LbY5p0F7ltDoLHfUU7mC0/Lz8f0M=";
+      sha256 = "MK+vzffho2YprwuBiGP9vF2a6GaGQYCPTsu0u6HBgec=";
     };
     vendorHash = null;
     meta = with lib; {
@@ -52,6 +52,7 @@ in {
       ripgrep
       gh
     ];
+    programs.ghostty.enable = true; 
 
     # smart cd command
     programs.zoxide = {
@@ -67,9 +68,8 @@ in {
     xdg.configFile = {
       # terminal
       "ghostty/config" = {
-        source = ./ghostty-config;
-      };
-      # multiplexer
+        source = ./ghostty-config; 
+      }; 
       "tmux/tmux.conf" = {
         source = ./tmux.conf;
       };
@@ -78,7 +78,12 @@ in {
       "bat/themes/Catppuccin_Mocha.tmTheme" = {
         source = ./catppuccin_bat.tmTheme;
       };
-
+      "rofi/config.rasi" = {
+        source = ./rofi.rasi; 
+      }; 
+      "rofi/themes/catppuccin-mocha.rasi" = {
+        source = ./ctp-rofi.rasi; 
+      }; 
       "bat/config" = {
         text = ''
           --theme='Catppuccin_Mocha'
@@ -110,7 +115,7 @@ in {
     # shell
     programs.zsh = {
       enable = true;
-      initExtraFirst = ''
+      initContent = ''
         bindkey -v
         source ~/.zsh/ctp_mocha.zsh
         export FZF_DEFAULT_OPTS=" \
@@ -124,9 +129,7 @@ in {
         bindkey -s '^k' "~/scripts/sesh_start.sh\n"
         bindkey -sv '^k'  "~/scripts/sesh_start.sh\n"
         source ~/.zsh/git-aliases.zsh
-      '';
 
-      initExtra = ''
         autoload -Uz vcs_info
 
         zstyle ':vcs_info:git:*' formats '%F{blue}git:(%F{red}%b%F{blue})%f %u%c'
