@@ -3,14 +3,18 @@
   pkgs,
   lib,
   ...
-}: {
-  home.packages = with pkgs; [maim i3-auto-layout];
+}:
+{
+  home.packages = with pkgs; [
+    maim
+    i3-auto-layout
+  ];
   xsession.windowManager.i3 = {
     enable = true;
     config = {
       modifier = "Mod4";
       fonts = {
-        names = ["Iosevka Nerd Font"];
+        names = [ "Iosevka Nerd Font" ];
         style = "Regular";
       };
       startup = [
@@ -23,9 +27,10 @@
           always = true;
         }
       ];
-      keybindings = let
-        modifier = config.xsession.windowManager.i3.config.modifier;
-      in
+      keybindings =
+        let
+          modifier = config.xsession.windowManager.i3.config.modifier;
+        in
         lib.mkOptionDefault {
           "${modifier}+Return" = "exec ghostty";
           "${modifier}+t" = "layout tabbed";
@@ -43,14 +48,14 @@
           "${modifier}+o" = "exec rofi -show window";
         };
       defaultWorkspace = "workspace number 1";
-      bars = [];
+      bars = [ ];
 
       window = {
         border = 2;
         titlebar = false;
       };
     };
-    # more reproducible now with ${pkgs.*}/bin/* 
+    # more reproducible now with ${pkgs.*}/bin/*
     extraConfig = ''
       bar {
         font pango:Iosevka Nerd Font 10 

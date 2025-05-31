@@ -11,28 +11,31 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = "github:danth/stylix"; 
+    stylix.url = "github:danth/stylix";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    zen-browser,
-    stylix, 
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {inherit system;};
-    lib = pkgs.lib;
-  in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      zen-browser,
+      stylix,
+      ...
+    }@inputs:
+    let
       system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./configuration.nix
-        ./ghost.nix
-      ];
+      pkgs = import nixpkgs { inherit system; };
+      lib = pkgs.lib;
+    in
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./configuration.nix
+          ./ghost.nix
+        ];
+      };
     };
-  };
 }

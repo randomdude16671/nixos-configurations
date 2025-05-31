@@ -2,9 +2,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.ghost.scripts;
-in {
+in
+{
   options.ghost.scripts.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;

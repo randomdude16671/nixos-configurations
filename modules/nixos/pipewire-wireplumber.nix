@@ -13,7 +13,12 @@
           "bluez5.enable-msbc" = true;
           "bluez5.dummy-avrcp-player" = true;
           "bluez5.enable-hw-volume" = true;
-          "bluez5.hw-volume" = ["a2dp_sink" "a2dp_source" "hsp_hs" "hsp_ag"];
+          "bluez5.hw-volume" = [
+            "a2dp_sink"
+            "a2dp_source"
+            "hsp_hs"
+            "hsp_ag"
+          ];
           "bluez5.codecs" = [
             "sbc"
             "aac"

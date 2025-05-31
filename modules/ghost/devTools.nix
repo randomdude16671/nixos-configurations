@@ -5,7 +5,8 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.ghost.devTools;
   mini-build = pkgs.buildGoModule {
     pname = "mini-build";
@@ -25,7 +26,8 @@ with lib; let
       license = licenses.mit;
     };
   };
-in {
+in
+{
   options.ghost.devTools.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;
@@ -52,8 +54,7 @@ in {
       ripgrep
       gh
     ];
-    programs.ghostty.enable = true; 
-
+    programs.ghostty.enable = true;
     # smart cd command
     programs.zoxide = {
       enable = true;
@@ -68,8 +69,8 @@ in {
     xdg.configFile = {
       # terminal
       "ghostty/config" = {
-        source = ./ghostty-config; 
-      }; 
+        source = ./ghostty-config;
+      };
       "tmux/tmux.conf" = {
         source = ./tmux.conf;
       };
@@ -79,11 +80,11 @@ in {
         source = ./catppuccin_bat.tmTheme;
       };
       "rofi/config.rasi" = {
-        source = ./rofi.rasi; 
-      }; 
+        source = ./rofi.rasi;
+      };
       "rofi/themes/catppuccin-mocha.rasi" = {
-        source = ./ctp-rofi.rasi; 
-      }; 
+        source = ./ctp-rofi.rasi;
+      };
       "bat/config" = {
         text = ''
           --theme='Catppuccin_Mocha'

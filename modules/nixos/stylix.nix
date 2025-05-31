@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   stylix.enable = true;
   stylix.base16Scheme = ../themes/catppuccin-mocha.yaml;
   stylix.fonts = {
@@ -22,4 +23,3 @@
   stylix.image = ../wallpapers/to.jpg;
   stylix.polarity = "dark";
 }
-
