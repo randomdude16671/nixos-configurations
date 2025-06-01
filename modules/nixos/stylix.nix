@@ -20,6 +20,7 @@
       name = "JetBrainsMono Nerd Font";
     };
   };
+  stylix.autoEnable = true; 
   stylix.image = ../wallpapers/to.jpg;
   stylix.polarity = "dark";
 }

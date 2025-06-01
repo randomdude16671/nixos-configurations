@@ -26,13 +26,17 @@
           command = "--no-startup-id /home/ghost/scripts/i3-tile.sh";
           always = true;
         }
+        {
+          command = "--no-startup-id picom"; 
+          always = true; 
+        }
       ];
       keybindings =
         let
           modifier = config.xsession.windowManager.i3.config.modifier;
         in
         lib.mkOptionDefault {
-          "${modifier}+Return" = "exec ghostty";
+          "${modifier}+Return" = "exec i3-sensible-terminal";
           "${modifier}+t" = "layout tabbed";
           "${modifier}+b" = "exec zen";
           "${modifier}+d" = "exec rofi -show drun";

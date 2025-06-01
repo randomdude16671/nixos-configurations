@@ -7,8 +7,6 @@
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     gitFull
-    xorg.xinit
-    xorg.libX11
     zed-editor
     gnupg
     spotify
@@ -17,7 +15,8 @@
     # terminal emulator, also include neovim in unstable flake.
     obsidian
     pamixer
-    nixd
+    nil
+    alacritty 
     alsa-utils
     gocryptfs
   ];

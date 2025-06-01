@@ -53,8 +53,8 @@ in
       tmux
       ripgrep
       gh
+      alacritty 
     ];
-    programs.ghostty.enable = true;
     # smart cd command
     programs.zoxide = {
       enable = true;
@@ -68,8 +68,8 @@ in
     };
     xdg.configFile = {
       # terminal
-      "ghostty/config" = {
-        source = ./ghostty-config;
+      "alacritty/alacritty.toml" = {
+        source = ./alacritty-config.toml;
       };
       "tmux/tmux.conf" = {
         source = ./tmux.conf;
@@ -158,7 +158,7 @@ in
 
         setopt PROMPT_SUBST
 
-        PROMPT='$(prompt_arrow)  $(prompt_dir) ''${vcs_info_msg_0_}'
+        PROMPT=' $(prompt_arrow)  $(prompt_dir) ''${vcs_info_msg_0_}'
       '';
 
       syntaxHighlighting.enable = true;
