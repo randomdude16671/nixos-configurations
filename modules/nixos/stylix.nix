@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   stylix.enable = true;
   stylix.base16Scheme = ../themes/catppuccin-mocha.yaml;
   stylix.fonts = {
@@ -20,7 +19,7 @@
       name = "JetBrainsMono Nerd Font";
     };
   };
-  stylix.autoEnable = true; 
+  stylix.autoEnable = true;
   stylix.image = ../wallpapers/to.jpg;
   stylix.polarity = "dark";
 }

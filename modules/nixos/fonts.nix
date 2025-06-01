@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
@@ -11,10 +10,10 @@
     fontconfig = {
       antialias = true;
       defaultFonts = {
-        serif = [ "JetBrainsMono Nerd Font" ];
-        sansSerif = [ "JetBrainsMono Nerd Font" ];
-        monospace = [ "Iosevka Nerd Font" ];
-        emoji = [ "Noto Color Emoji" ];
+        serif = ["JetBrainsMono Nerd Font"];
+        sansSerif = ["JetBrainsMono Nerd Font"];
+        monospace = ["Iosevka Nerd Font"];
+        emoji = ["Noto Color Emoji"];
       };
     };
   };

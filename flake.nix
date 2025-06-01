@@ -14,28 +14,26 @@
     stylix.url = "github:nix-community/stylix";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      zen-browser,
-      stylix,
-      ...
-    }@inputs:
-    let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    zen-browser,
+    stylix,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {inherit system;};
+    lib = pkgs.lib;
+  in {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
-      lib = pkgs.lib;
-    in
-    {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./configuration.nix
-          ./ghost.nix
-        ];
-      };
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./configuration.nix
+        ./ghost.nix
+      ];
     };
+    formatter.${system} = pkgs.alejandra;
+  };
 }

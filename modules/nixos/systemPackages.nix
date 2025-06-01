@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
-{
+{pkgs, ...}: {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     gitFull
@@ -16,8 +11,14 @@
     obsidian
     pamixer
     nil
-    alacritty 
+    alacritty
     alsa-utils
     gocryptfs
   ];
+  # for root
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+  };
 }

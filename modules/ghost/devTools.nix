@@ -5,8 +5,7 @@
   pkgs,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.ghost.devTools;
   mini-build = pkgs.buildGoModule {
     pname = "mini-build";
@@ -26,8 +25,7 @@ let
       license = licenses.mit;
     };
   };
-in
-{
+in {
   options.ghost.devTools.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;
@@ -53,7 +51,7 @@ in
       tmux
       ripgrep
       gh
-      alacritty 
+      alacritty
     ];
     # smart cd command
     programs.zoxide = {

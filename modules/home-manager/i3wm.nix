@@ -3,8 +3,7 @@
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   home.packages = with pkgs; [
     maim
     i3-auto-layout
@@ -14,7 +13,7 @@
     config = {
       modifier = "Mod4";
       fonts = {
-        names = [ "Iosevka Nerd Font" ];
+        names = ["Iosevka Nerd Font"];
         style = "Regular";
       };
       startup = [
@@ -27,14 +26,13 @@
           always = true;
         }
         {
-          command = "--no-startup-id picom"; 
-          always = true; 
+          command = "--no-startup-id picom";
+          always = true;
         }
       ];
-      keybindings =
-        let
-          modifier = config.xsession.windowManager.i3.config.modifier;
-        in
+      keybindings = let
+        modifier = config.xsession.windowManager.i3.config.modifier;
+      in
         lib.mkOptionDefault {
           "${modifier}+Return" = "exec i3-sensible-terminal";
           "${modifier}+t" = "layout tabbed";
@@ -52,7 +50,7 @@
           "${modifier}+o" = "exec rofi -show window";
         };
       defaultWorkspace = "workspace number 1";
-      bars = [ ];
+      bars = [];
 
       window = {
         border = 2;
@@ -62,11 +60,11 @@
     # more reproducible now with ${pkgs.*}/bin/*
     extraConfig = ''
       bar {
-        font pango:Iosevka Nerd Font 10 
+        font pango:Iosevka Nerd Font 10
         mode dock
         hidden_state hide
         position bottom
-        status_command ${pkgs.i3status}/bin/i3status 
+        status_command ${pkgs.i3status}/bin/i3status
         i3bar_command ${pkgs.i3}/bin/i3bar
         workspace_buttons yes
         strip_workspace_numbers no

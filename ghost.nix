@@ -3,8 +3,7 @@
   inputs,
   lib,
   ...
-}:
-{
+}: {
   home-manager.backupFileExtension = "hmBak";
   home-manager.users.ghost = {
     home.packages = with pkgs; [
