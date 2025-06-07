@@ -10,7 +10,7 @@
     # terminal emulator, also include neovim in unstable flake.
     obsidian
     pamixer
-    nil
+    nixd
     alacritty
     alsa-utils
     gocryptfs

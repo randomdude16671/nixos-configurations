@@ -9,7 +9,7 @@
     home.packages = with pkgs; [
       # all gui apps
       inputs.zen-browser.packages."${system}".beta
-      ghostty
+      inputs.mini-build.packages."${system}".default # my build system thing
       authenticator
       i3status
       rofi
@@ -22,6 +22,10 @@
       ./modules/ghost
     ];
     gtk.enable = true;
+    home.sessionVariables = {
+      EDITOR = "nvim";
+    };
+
     # yes these are my own modules
     ghost = {
       devTools.enable = true;

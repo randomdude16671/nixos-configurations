@@ -7,24 +7,6 @@
 }:
 with lib; let
   cfg = config.ghost.devTools;
-  mini-build = pkgs.buildGoModule {
-    pname = "mini-build";
-    version = "0.1.0";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "randomdude16671";
-      repo = "mini-build";
-      rev = "main";
-      sha256 = "MK+vzffho2YprwuBiGP9vF2a6GaGQYCPTsu0u6HBgec=";
-    };
-    vendorHash = null;
-    meta = with lib; {
-      description = "A super small build system written mainly for personal use.";
-      homepage = "https://github.com/randomdude16671/mini-build";
-      platforms = platforms.linux;
-      license = licenses.mit;
-    };
-  };
 in {
   options.ghost.devTools.enable = lib.mkOption {
     type = lib.types.bool;
@@ -34,7 +16,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      mini-build
       bat
       neovim
       sesh
@@ -48,6 +29,7 @@ in {
       direnv
       nix-direnv
       fzf
+      alejandra
       tmux
       ripgrep
       gh
@@ -167,7 +149,7 @@ in {
         "ls" = "eza";
         "cat" = "bat";
         "cd" = "z";
-        "cl" = "clear -x"; # -x keeps the scrollback
+        "cl" = "clear";
         "vi" = "nvim";
         "vim" = "nvim";
         "grep" = "rg";

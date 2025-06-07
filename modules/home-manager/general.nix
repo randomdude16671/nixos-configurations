@@ -9,5 +9,4 @@
   # cuztom stylix shitze.
   stylix.targets.qt.enable = true;
   stylix.targets.fzf.enable = false;
-  stylix.targets.ghostty.enable = false;
 }

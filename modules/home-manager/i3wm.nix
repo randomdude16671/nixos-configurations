@@ -26,6 +26,10 @@
           always = true;
         }
         {
+          command = "--no-startup-id xset r rate 200 40"; # better repeat rate
+          always = true;
+        }
+        {
           command = "--no-startup-id picom";
           always = true;
         }
