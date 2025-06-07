@@ -2,6 +2,7 @@
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     gitFull
+		dwt1-shell-color-scripts
     zed-editor
     gnupg
     spotify

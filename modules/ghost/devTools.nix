@@ -98,6 +98,7 @@ in {
       enable = true;
       initContent = ''
         bindkey -v
+				PATH="$PATH:/home/ghost/.local/bin/" 
         source ~/.zsh/ctp_mocha.zsh
         export FZF_DEFAULT_OPTS=" \
         --color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
