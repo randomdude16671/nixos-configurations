@@ -2,7 +2,7 @@
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     gitFull
-		dwt1-shell-color-scripts
+    dwt1-shell-color-scripts
     zed-editor
     gnupg
     spotify
@@ -15,6 +15,8 @@
     alacritty
     alsa-utils
     gocryptfs
+    man-pages
+    man-pages-posix
   ];
   # for root
   programs.neovim = {

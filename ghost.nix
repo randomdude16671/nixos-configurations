@@ -22,9 +22,6 @@
       ./modules/ghost
     ];
     gtk.enable = true;
-    home.sessionVariables = {
-      EDITOR = "nvim";
-    };
 
     # yes these are my own modules
     ghost = {
