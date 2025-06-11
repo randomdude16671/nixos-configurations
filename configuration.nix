@@ -10,6 +10,7 @@
     ./modules/nixos
     ./hardware-configuration.nix
   ];
+
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Kolkata";

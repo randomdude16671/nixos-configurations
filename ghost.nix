@@ -8,7 +8,6 @@
   home-manager.users.ghost = {
     home.packages = with pkgs; [
       # all gui apps
-      inputs.zen-browser.packages."${system}".beta
       inputs.mini-build.packages."${system}".default # my build system thing
       authenticator
       i3status
@@ -27,6 +26,14 @@
     ghost = {
       devTools.enable = true;
       scripts.enable = true;
+      browser.enable = true;
+
+      # this list may change in the future
+      browser.extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        darkreader
+        ghostery
+        vimium
+      ];
     };
 
     home.stateVersion = "24.11";

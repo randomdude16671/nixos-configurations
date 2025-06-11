@@ -2,11 +2,11 @@
   description = "Ghost's NixOS Flake.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
+    nur = {
+      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     mini-build.url = "github:randomdude16671/mini-build";
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -19,18 +19,22 @@
     self,
     nixpkgs,
     home-manager,
-    zen-browser,
     stylix,
+    nur,
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {inherit system;};
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [nur.overlay];
+    };
     lib = pkgs.lib;
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
+        nur.modules.nixos.default
         ./configuration.nix
         ./ghost.nix
       ];

@@ -40,7 +40,7 @@
         lib.mkOptionDefault {
           "${modifier}+Return" = "exec i3-sensible-terminal";
           "${modifier}+t" = "layout tabbed";
-          "${modifier}+b" = "exec zen";
+          "${modifier}+b" = "exec librewolf";
           "${modifier}+d" = "exec rofi -show drun";
           "${modifier}+Shift+S" = "exec maim -s | xclip -selection clipboard -t image/png";
           "${modifier}+s" = "exec maim -s ~/foo.png";
