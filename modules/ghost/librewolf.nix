@@ -24,7 +24,7 @@ in {
         name = "ghost";
         isDefault = true;
         settings = {
-          "browser.startup.homepage" = "about:blank";
+          "browser.startup.homepage" = "file:///home/ghost/.librewolf_homepage_html/index.html";
           "signon.rememberSignons" = true;
         };
         extensions.packages = cfg.extensions;

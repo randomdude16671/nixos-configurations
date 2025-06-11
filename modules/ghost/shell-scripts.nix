@@ -25,6 +25,10 @@ in {
         source = ./../scripts/i3-tile.sh;
         executable = true;
       };
+      "scripts/install_nvim" = {
+        source = ./../scripts/install_neovim.sh;
+        executable = true;
+      };
     };
   };
 }

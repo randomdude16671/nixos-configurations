@@ -33,6 +33,7 @@
         darkreader
         ghostery
         vimium
+        custom-new-tab-page
       ];
     };
 
