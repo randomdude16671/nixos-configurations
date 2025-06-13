@@ -29,11 +29,12 @@
       browser.enable = true;
 
       # this list may change in the future
+      # goated extensions I currently use
       browser.extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         darkreader
         ghostery
         vimium
-        custom-new-tab-page
+        new-tab-override
       ];
     };
 
