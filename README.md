@@ -1,9 +1,7 @@
-# My NixOS configuration flake. 
+# My NixOS Configuration 
+###### modules: 
+- ghost: 
+    a collection of super small opinionated modules that I made for setting up things the way I want them to be. 
 
-./modules/ghost is a special directory because it is a collection of super small modules which are very opinionated. 
-But they contain a few things in a way I like them configured. 
-
-I recently wiped all my commits just beacuse I accidentally just did `rm -r` on my directory.... (With a force push) 
-
-
-<small>Why did I reset my commits with a force push...</small> 
+###### Install: 
+> TODO: write some stuff
