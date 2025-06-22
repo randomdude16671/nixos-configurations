@@ -23,7 +23,6 @@ export FZF_DEFAULT_OPTS=" \
 	--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
 	--color=selected-bg:#45475A \
 	--color=border:#313244,label:#CDD6F4"
-. <(fzf --zsh)
 source ~/.zsh/git-aliases.zsh
 
 
