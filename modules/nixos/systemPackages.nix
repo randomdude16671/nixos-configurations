@@ -17,6 +17,7 @@
     gocryptfs
     man-pages
     man-pages-posix
+    glow
   ];
   # for root
   programs.neovim = {

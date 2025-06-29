@@ -29,25 +29,17 @@ in {
       zoxide
       btop
       fd
-      unzip
+      foot
       arduino-ide
       eza
       gum
-      direnv
-      nix-direnv
-      fzf
       alejandra
       tmux
       ripgrep
       gh
-      alacritty
+      dust
+      duf
     ];
-    # smart cd command
-    programs.zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
     home.file.".zsh/ctp_mocha.zsh".source = ./ctp_mocha.zsh;
 
     home.sessionVariables = {
@@ -55,13 +47,12 @@ in {
     };
     xdg.configFile = {
       # terminal
-      "alacritty/alacritty.toml" = {
-        source = ./alacritty-config.toml;
-      };
       "tmux/tmux.conf" = {
         source = ./tmux.conf;
       };
-
+      "foot/foot.ini" = {
+        source = ./foot.ini;
+      };
       # cat alternative
       "bat/themes/Catppuccin_Mocha.tmTheme" = {
         source = ./catppuccin_bat.tmTheme;
@@ -90,6 +81,11 @@ in {
         package = pkgs.nix-direnv;
       };
     };
+    # smart cd command
+    programs.zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
 
     # fuzzy finder
     programs.fzf = {
@@ -113,8 +109,14 @@ in {
           src = pkgs.zsh-vi-mode;
           file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
         }
+        {
+          name = "fzf-tab";
+          src = pkgs.zsh-fzf-tab;
+          file = "share/fzf-tab/fzf-tab.plugin.zsh";
+        }
       ];
       autocd = true;
+      historySubstringSearch.enable = true;
       shellAliases = {
         "gs" = "git status";
         "mb" = "mini-build";
@@ -124,9 +126,6 @@ in {
         "clear" = "";
         # to prevent the `clear` alias from interfereing
         "cl" = "${pkgs.ncurses}/bin/clear -x";
-        "vi" = "nvim";
-        "vim" = "nvim";
-        "rebuild" = "~/scripts/rebuild.sh";
         "grep" = "rg";
       };
     };

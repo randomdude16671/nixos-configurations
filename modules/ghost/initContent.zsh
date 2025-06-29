@@ -30,8 +30,8 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' formats '%F{blue}git:(%F{red}%b%F{blue})%f %u%c'
 zstyle ':vcs_info:git:*' actionformats '%F{blue}git:(%F{red}%b|%a%F{blue})%f %u%c'
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' unstagedstr '%F{yellow}✗%f '
-zstyle ':vcs_info:git:*' stagedstr '%F{green}✓%f '
+zstyle ':vcs_info:git:*' unstagedstr '%F{yellow} %f '
+zstyle ':vcs_info:git:*' stagedstr '%F{green} %f '
 zstyle ':vcs_info:*' enable git
 precmd() { vcs_info }
 prompt_dir() {
@@ -45,4 +45,4 @@ prompt_arrow() {
 	[[ $? -eq 0 ]] && echo "%F{green}>%f" || echo "%F{red}<%f"
 }
 setopt PROMPT_SUBST
-PROMPT=' $(prompt_arrow)  $(prompt_dir) ${vcs_info_msg_0_}'
+PROMPT=' $(prompt_arrow)  $(prompt_dir) ${vcs_info_msg_0_}' 

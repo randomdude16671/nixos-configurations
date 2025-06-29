@@ -1,13 +1,10 @@
 {pkgs, ...}: {
-  services.xserver = {
+  programs.sway = {
     enable = true;
-    windowManager.i3.enable = true; # configuration handled by home-manager.
-    excludePackages = [pkgs.xterm];
-    xkb = {
-      layout = "us";
-      variant = "";
-      options = "caps:swapescape";
-    };
+    package = pkgs.sway;
+    xwayland.enable = true;
   };
-  services.displayManager.ly.enable = true;
+  services.displayManager.ly = {
+    enable = true;
+  };
 }

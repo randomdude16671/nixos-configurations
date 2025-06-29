@@ -1,1 +1,2 @@
-swappy -f ~/screenshots/latest.png # symlink to the latest screenshot 
+swappy -f "$HOME/screenshots/latest.png" 
+&& wl-copy --type image/png <  "$HOME/screenshots/latest.png" 
