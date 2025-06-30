@@ -8,13 +8,13 @@
   home-manager.users.ghost = {
     home.packages = with pkgs; [
       # all gui apps
-      inputs.mini-build.packages."${system}".default # my build system thing
+      inputs.volt-build.packages."${system}".default # my build system thing
       authenticator
       i3status
       rofi
       vesktop
       nsxiv
-      xclip
+      wl-clipboard
     ];
     imports = [
       ./modules/home-manager

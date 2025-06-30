@@ -24,6 +24,7 @@ in {
 
       # Normal packages
       bat
+			hyperfine
       neovim
       sesh
       zoxide
@@ -66,6 +67,7 @@ in {
       "bat/config" = {
         text = ''
           --theme='Catppuccin_Mocha'
+          --pager='less -FR'
         '';
       };
     };

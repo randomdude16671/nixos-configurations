@@ -5,7 +5,6 @@
       isNormalUser = true;
       extraGroups = [
         "networkmanager"
-        "wheel"
         "libvirtd"
         "dialout" # arduino ide
         "audio"

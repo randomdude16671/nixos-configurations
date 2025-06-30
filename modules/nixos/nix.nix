@@ -12,7 +12,6 @@
         "https://nix-community.cachix.org"
       ];
       trusted-users = [
-        "@wheel"
         "root"
         "ghost"
       ];
