@@ -7,8 +7,8 @@
   stylix.base16Scheme = ../themes/catppuccin-mocha.yaml;
   stylix.fonts = {
     monospace = {
-      package = pkgs.nerd-fonts.iosevka;
-      name = "Iosevka Nerd Font";
+      package = pkgs.nerd-fonts.iosevka-term;
+      name = "Iosevka Term Nerd Font";
     };
     sansSerif = {
       package = pkgs.nerd-fonts.jetbrains-mono;

@@ -25,7 +25,7 @@
       };
       modifier = "Mod4";
       fonts = {
-        names = ["Iosevka Nerd Font"];
+        names = ["Iosevka Term Nerd Font"];
         style = "Regular";
       };
       keybindings = let
@@ -57,7 +57,7 @@
     };
     extraConfig = ''
       bar {
-        font pango:Iosevka Nerd Font 10
+        font pango:Iosevka Term Nerd Font 10
         mode dock
         hidden_state hide
         position bottom
