@@ -35,7 +35,8 @@
         ghostery
         vimium
         new-tab-override
-        youtube-recommended-videos
+				firefox-color
+        youtube-recommended-videos # unhook 
       ];
     };
 
