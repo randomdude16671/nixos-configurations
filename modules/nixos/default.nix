@@ -12,6 +12,7 @@ _: {
     ./some-services.nix
     ./user.nix
     ./locale-things.nix
+		./printing.nix
     ./boot.nix
     ./man.nix
     ./hardware.nix

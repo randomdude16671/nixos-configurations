@@ -7,6 +7,8 @@
         "networkmanager"
         "libvirtd"
         "dialout" # arduino ide
+				"lpadmin"
+				"lp"
         "audio"
       ];
       useDefaultShell = true;

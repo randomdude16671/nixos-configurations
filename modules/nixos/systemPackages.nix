@@ -12,7 +12,7 @@
     obsidian
     pamixer
     nixd
-    alacritty
+		foot 
     alsa-utils
     gocryptfs
     man-pages
