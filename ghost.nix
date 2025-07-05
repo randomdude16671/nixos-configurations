@@ -22,6 +22,11 @@
     ];
     gtk.enable = true;
 
+		programs.swaylock = { 
+			enable = true; 
+			package = pkgs.swaylock-effects; 
+		}; 
+
     # yes these are my own modules
     ghost = {
       devTools.enable = true;

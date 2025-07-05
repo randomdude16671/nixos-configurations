@@ -8,12 +8,23 @@
     slurp
     grim
     swappy
+		autotiling-rs 
     i3status
   ];
   services.swayosd.enable = true;
   wayland.windowManager.sway = {
     enable = true;
     config = {
+			startup = [
+				{
+					command = "~/scripts/swayidle.sh"; 
+					always = true; 
+				} 
+				{
+					command = "autotiling-rs"; 
+					always = true; 
+				}
+			]; 
       input = {
         "*" = {
           xkb_options = "caps:swapescape";
