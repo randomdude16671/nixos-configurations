@@ -5,7 +5,6 @@
     dwt1-shell-color-scripts
     zed-editor
     gnupg
-    spotify
     # tip : always have a gui editor with a terminal
     # inside so you can still edit stuff if you accidentally delete your
     # terminal emulator, also include neovim in unstable flake.

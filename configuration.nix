@@ -7,6 +7,7 @@
   imports = [
     inputs.stylix.nixosModules.stylix
     inputs.home-manager.nixosModules.home-manager
+		inputs.spicetify.nixosModules.spicetify
     ./modules/nixos
     ./hardware-configuration.nix
   ];

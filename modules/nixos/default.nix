@@ -5,6 +5,7 @@ _: {
     ./systemPackages.nix
     ./stylix.nix
     ./pipewire-wireplumber.nix
+		./spicetify.nix
     ./nix.nix
     ./dm-de.nix
     ./security.nix
