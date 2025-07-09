@@ -25,6 +25,6 @@
 		size = 24; 
 	};
   stylix.autoEnable = true;
-  stylix.image = ../wallpapers/to.jpg;
+  stylix.image = ../wallpapers/after.png; # goodbye to.jpg (I used that exact file for years) 
   stylix.polarity = "dark";
 }
