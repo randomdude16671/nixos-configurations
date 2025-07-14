@@ -10,16 +10,16 @@
           keepEnv = true;
           persist = true;
         }
-				{
-					users = ["ghost"]; 
-					cmd = "vi"; 
-					noPass = true; 
-				}
-				{
-					users = ["ghost"]; 
-					cmd = "nvim"; 
-					noPass = true; 
-				}
+        {
+          users = ["ghost"];
+          cmd = "vi";
+          noPass = true;
+        }
+        {
+          users = ["ghost"];
+          cmd = "nvim";
+          noPass = true;
+        }
       ];
     };
     pam = {

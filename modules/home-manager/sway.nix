@@ -8,23 +8,32 @@
     slurp
     grim
     swappy
-		autotiling-rs 
+    autotiling-rs
+    brightnessctl
+    playerctl
     i3status
   ];
-  services.swayosd.enable = true;
   wayland.windowManager.sway = {
     enable = true;
     config = {
-			startup = [
-				{
-					command = "~/scripts/swayidle.sh"; 
-					always = true; 
-				} 
-				{
-					command = "autotiling-rs"; 
-					always = true; 
-				}
-			]; 
+      startup = [
+        {
+          command = "~/scripts/swayidle.sh";
+          always = true;
+        }
+        {
+          command = "swaync &";
+          always = true;
+        }
+        {
+          command = "swayosd-server";
+          always = true;
+        }
+        {
+          command = "autotiling-rs";
+          always = true;
+        }
+      ];
       input = {
         "*" = {
           xkb_options = "caps:swapescape";
@@ -49,8 +58,15 @@
           "${modifier}+d" = "exec rofi -show drun";
           "${modifier}+Shift+S" = "exec ~/scripts/maim.sh";
           "${modifier}+Shift+D" = "exec ~/scripts/swappy.sh";
-          "XF86AudioRaiseVolume" = "exec pamixer --increase 5";
-          "XF86AudioLowerVolume" = "exec pamixer --decrease 5";
+          "XF86AudioRaiseVolume" = "exec swayosd-client --output-volume +5";
+          "XF86AudioLowerVolume" = "exec swayosd-client --output-volume -5";
+          "XF86AudioMute" = "exec swayosd-client --output-volume mute-toggle";
+          "XF86MonBrightnessUp" = "exec swayosd-client --brightness +5";
+          "XF86MonBrightnessDown" = "exec swayosd-client --brightness -5";
+          "XF86AudioMicMute" = "exec swayosd-client --input-volume mute-toggle";
+          "${modifier}+Shift+n" = "exec playerctl next";
+          "${modifier}+Shift+p" = "exec playerctl previous";
+          "${modifier}+p" = "exec swaync-client -t"; # open panel/close panel
           "${modifier}+w" = "kill";
           "${modifier}+h" = "focus left";
           "${modifier}+j" = "focus down";

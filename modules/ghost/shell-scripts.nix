@@ -41,14 +41,14 @@ in {
         source = ./../scripts/rebuild.sh;
         executable = true;
       };
-			"scripts/lock.sh" = {
-				source = ./../scripts/lock.sh;
-				executable = true; 
-			};
-			"scripts/swayidle.sh" = {
-				source = ./../scripts/swayidle.sh; 
-				executable = true; 
-			};
+      "scripts/lock.sh" = {
+        source = ./../scripts/lock.sh;
+        executable = true;
+      };
+      "scripts/swayidle.sh" = {
+        source = ./../scripts/swayidle.sh;
+        executable = true;
+      };
     };
   };
 }

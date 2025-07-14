@@ -5,7 +5,7 @@ _: {
     ./systemPackages.nix
     ./stylix.nix
     ./pipewire-wireplumber.nix
-		./spicetify.nix
+    ./spicetify.nix
     ./nix.nix
     ./dm-de.nix
     ./security.nix
@@ -13,7 +13,7 @@ _: {
     ./some-services.nix
     ./user.nix
     ./locale-things.nix
-		./printing.nix
+    ./printing.nix
     ./boot.nix
     ./man.nix
     ./hardware.nix

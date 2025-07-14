@@ -11,9 +11,10 @@
       inputs.volt-build.packages."${system}".default # my build system thing
       authenticator
       i3status
-      rofi
+      rofi-wayland
       vesktop
       nsxiv
+      azahar
       wl-clipboard
     ];
     imports = [
@@ -22,10 +23,10 @@
     ];
     gtk.enable = true;
 
-		programs.swaylock = { 
-			enable = true; 
-			package = pkgs.swaylock-effects; 
-		}; 
+    programs.swaylock = {
+      enable = true;
+      package = pkgs.swaylock-effects;
+    };
 
     # yes these are my own modules
     ghost = {
@@ -40,7 +41,7 @@
         ghostery
         vimium
         new-tab-override
-        youtube-recommended-videos # unhook 
+        youtube-recommended-videos # unhook
       ];
     };
 
