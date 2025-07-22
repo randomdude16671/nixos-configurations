@@ -6,7 +6,6 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    spicetify.url = "github:Gerg-L/spicetify-nix/master";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     volt-build.url = "github:volt-build/volt-build/main";
     home-manager = {

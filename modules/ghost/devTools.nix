@@ -34,7 +34,6 @@ in {
       arduino-ide
       eza
       gum
-      alejandra
       tmux
       ripgrep
       gh

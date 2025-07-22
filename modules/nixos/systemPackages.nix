@@ -2,22 +2,23 @@
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     gitFull
-    dwt1-shell-color-scripts
-    zed-editor
+    alejandra
     gnupg
     # tip : always have a gui editor with a terminal
     # inside so you can still edit stuff if you accidentally delete your
     # terminal emulator, also include neovim in unstable flake.
+    zed-editor
     obsidian
-    pamixer
-    nixd
     foot
     alsa-utils
+    spotify
     gocryptfs
     man-pages
+    nixd
     man-pages-posix
     glow
   ];
+
   # for root
   programs.neovim = {
     enable = true;

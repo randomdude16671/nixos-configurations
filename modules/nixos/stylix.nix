@@ -4,11 +4,11 @@
   ...
 }: {
   stylix.enable = true;
-  stylix.base16Scheme = ../themes/catppuccin-mocha.yaml;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   stylix.fonts = {
     monospace = {
       package = pkgs.nerd-fonts.iosevka-term;
-      name = "Iosevka Term Nerd Font";
+      name = "IosevkaTerm Nerd Font";
     };
     sansSerif = {
       package = pkgs.nerd-fonts.jetbrains-mono;

@@ -4,6 +4,7 @@
   lib,
   ...
 }: {
+  home-manager.useGlobalPkgs = true;
   home-manager.backupFileExtension = "hmBak";
   home-manager.users.ghost = {
     home.packages = with pkgs; [
@@ -12,6 +13,7 @@
       authenticator
       i3status
       rofi-wayland
+      nixd
       vesktop
       nsxiv
       azahar
