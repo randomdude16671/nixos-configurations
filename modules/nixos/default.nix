@@ -1,21 +1,20 @@
-_: {
-  imports = [
-    ./bluetooth.nix
-    ./gnupg.nix
-    ./systemPackages.nix
-    ./stylix.nix
-    ./pipewire-wireplumber.nix
-    ./nix.nix
-    ./dm-de.nix
-    ./security.nix
-    ./virtualization.nix
-    ./some-services.nix
-    ./user.nix
-    ./locale-things.nix
-    ./printing.nix
-    ./boot.nix
-    ./man.nix
-    ./hardware.nix
-    ./syncthing.nix
-  ];
+{lib, ...}: let
+  inherit (builtins) readDir attrNames foldl';
+
+  recursiveNixFiles = path: let
+    entries = readDir path;
+  in
+    foldl' (
+      acc: name: let
+        fullPath = path + "/${name}";
+        fileType = entries.${name};
+      in
+        if fileType == "directory"
+        then acc ++ (recursiveNixFiles fullPath)
+        else if fileType == "regular" && lib.hasSuffix ".nix" name && name != "default.nix"
+        then acc ++ [fullPath]
+        else acc
+    ) [] (attrNames entries);
+in {
+  imports = recursiveNixFiles ./.;
 }
