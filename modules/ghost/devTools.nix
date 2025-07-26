@@ -32,6 +32,7 @@ in {
       bat
       hyperfine
       neovim
+      zk
       sesh
       zoxide
       btop
