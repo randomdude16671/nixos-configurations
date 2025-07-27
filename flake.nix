@@ -8,6 +8,7 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     volt-build.url = "github:volt-build/volt-build/main";
+    neovim.url = "github:nix-community/neovim-nightly-overlay";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +36,14 @@
       specialArgs = {inherit inputs;};
       modules = [
         nur.modules.nixos.default
+        {
+          programs.neovim = {
+            enable = true;
+            package = inputs.neovim.packages.${system}.default;
+            viAlias = true;
+            vimAlias = true;
+          };
+        }
         ./configuration.nix
         ./ghost.nix
       ];

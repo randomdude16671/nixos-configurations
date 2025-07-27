@@ -31,7 +31,6 @@ in {
       # Normal packages
       bat
       hyperfine
-      neovim
       zk
       sesh
       zoxide

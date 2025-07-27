@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     gitFull
@@ -18,11 +22,4 @@
     man-pages-posix
     glow
   ];
-
-  # for root
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-  };
 }
