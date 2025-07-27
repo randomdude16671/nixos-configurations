@@ -84,7 +84,7 @@
     };
     extraConfig = ''
       bar {
-        font pango:Iosevka Term Nerd Font 10
+        font pango:Iosevka Term Nerd Font 11
         mode dock
         hidden_state hide
         position bottom
