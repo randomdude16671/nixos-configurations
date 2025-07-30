@@ -7,9 +7,7 @@
 }:
 with lib; let
   cfg = config.ghost.devTools;
-
   zshInitContent = builtins.readFile ./initContent.zsh;
-
   tmuxConf = builtins.concatStringsSep "\n" [
     "set-option -g default-shell ${pkgs.zsh}/bin/zsh"
     (builtins.readFile ./tmux.conf)
