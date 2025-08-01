@@ -1,4 +1,3 @@
-# devTools module for my developer tools;
 {
   config,
   lib,
@@ -6,14 +5,14 @@
   ...
 }:
 with lib; let
-  cfg = config.ghost.devTools;
-  zshInitContent = builtins.readFile ./initContent.zsh;
+  cfg = config.ghost.dev;
+  zshInitContent = builtins.readFile ./zsh/initContent.zsh;
   tmuxConf = builtins.concatStringsSep "\n" [
     "set-option -g default-shell ${pkgs.zsh}/bin/zsh"
-    (builtins.readFile ./tmux.conf)
+    (builtins.readFile ./tmux/tmux.conf)
   ];
 in {
-  options.ghost.devTools.enable = mkOption {
+  options.ghost.dev.enable = mkOption {
     type = types.bool;
     default = false;
     description = "Enable Ghost's Dev Tools.";
@@ -21,12 +20,9 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      # Bat extensions
       bat-extras.batman
       bat-extras.batdiff
       bat-extras.batpipe
-
-      # Normal packages
       bat
       hyperfine
       zk
@@ -34,19 +30,17 @@ in {
       zoxide
       btop
       fd
-      foot
       arduino-ide
       eza
       gum
       tmux
       ripgrep
       gh
-      dust
       duf
     ];
 
-    home.file.".zsh/ctp_mocha.zsh".source = ./ctp_mocha.zsh;
-    home.file.".zsh/git-aliases.zsh".source = ./git-zsh.zsh;
+    home.file.".zsh/ctp_mocha.zsh".source = ./zsh/ctp_mocha.zsh;
+    home.file.".zsh/git-aliases.zsh".source = ./zsh/git-zsh.zsh;
 
     home.sessionVariables = {
       DIRENV_WARN_TIMEOUT = 0;
@@ -57,21 +51,21 @@ in {
     xdg.configFile = {
       # terminal
       "tmux/tmux.conf".text = tmuxConf;
-      "foot/foot.ini".source = ./foot.ini;
+      "foot/foot.ini".source = ./terminal/foot.ini;
 
-      # bat config and theme
-      "bat/themes/Catppuccin_Mocha.tmTheme".source = ./catppuccin_bat.tmTheme;
+      # cat alternative
+      "bat/themes/Catppuccin_Mocha.tmTheme".source = ./bat/catppuccin.tmTheme;
       "bat/config".text = ''
         --theme='Catppuccin_Mocha'
         --pager='less -FR'
       '';
 
-      # rofi config
-      "rofi/config.rasi".source = ./rofi.rasi;
-      "rofi/themes/catppuccin-mocha.rasi".source = ./ctp-rofi.rasi;
+      # app launcher
+      "rofi/config.rasi".source = ./rofi/rofi.rasi;
+      "rofi/themes/catppuccin-mocha.rasi".source = ./rofi/ctp-rofi.rasi;
     };
 
-    # for auto dev-shell (i use)
+    # for auto dev-shell
     programs.direnv = {
       enable = true;
       enableZshIntegration = true;
@@ -102,8 +96,7 @@ in {
       autocd = true;
       syntaxHighlighting.enable = true;
       historySubstringSearch.enable = true;
-
-      # raw plugin management through Nix. No need for zinit, zplug or antidote (or anything similar)
+      # manual plugin management
       plugins = [
         {
           name = "vi-mode";
@@ -119,14 +112,13 @@ in {
 
       shellAliases = {
         "gs" = "git status";
-        "volt" = "volt-build";
         "ls" = "eza";
         "cat" = "bat";
         "cd" = "z";
         "clear" = "";
         # to prevent the `clear` alias from interfering
         "cl" = "${pkgs.ncurses}/bin/clear -x";
-        "grep" = "rg";
+        "rgv" = "rg --vimgrep ";
       };
     };
   };

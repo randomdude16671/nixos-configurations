@@ -21,6 +21,7 @@
     nixpkgs,
     home-manager,
     stylix,
+    volt-build,
     nur,
     ...
   } @ inputs: let
@@ -37,6 +38,18 @@
       modules = [
         nur.modules.nixos.default
         {
+          home-manager.useGlobalPkgs = true;
+          home-manager.backupFileExtension = "hm.bak";
+          home-manager.users.ghost = {
+            home.packages = [
+              volt-build.packages."${system}".default
+            ];
+            imports = [
+              ./ghost.nix
+            ];
+          };
+        }
+        {
           programs.neovim = {
             enable = true;
             package = inputs.neovim.packages.${system}.default;
@@ -45,7 +58,6 @@
           };
         }
         ./configuration.nix
-        ./ghost.nix
       ];
     };
     formatter.${system} = pkgs.alejandra;

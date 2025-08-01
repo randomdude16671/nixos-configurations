@@ -1,16 +1,20 @@
 {pkgs, ...}: {
-  dconf = {
-    enable = false;
-  };
-
+  home.packages = [
+    pkgs.authenticator
+    pkgs.i3status
+    pkgs.rofi-wayland
+    pkgs.nixd
+    pkgs.vesktop
+    pkgs.imv
+    pkgs.wl-clipboard
+  ];
   gtk = {
+    enable = true;
     iconTheme = {
       name = "Adwaita-dark";
       package = pkgs.adwaita-icon-theme;
     };
   };
-
-  # for stylix to generate theme for.
   programs.btop.enable = true;
 
   # cuztom stylix shitze.
