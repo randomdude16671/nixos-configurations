@@ -1,29 +1,111 @@
-# My NixOS config. 
+# Hydra (Hostname and what I call this configuration) 
 
-![Hydra](screenshots/latest.png)
+> A clean, minimal, fully declarative NixOS + Sway config with <400MB RAM idle usage.  
+> Designed for speed, full control, and zero bloat.
 
-Designed for very small RAM footprint and speed and zero-bloat. 
+![Hydra in action](screenshots/latest.png)
 
-## Configurations: 
+---
 
-- Stuff related to NixOS modules lives in [modules/nixos](modules/nixos)
-- Stuff related to home-manager modules lives [modules/home](modules/home)
-- Custom "ghost" modules live in [modules/ghost](modules/ghost)
-- Shell scripts for "ghost" module of shell-scripts [modules/scripts](modules/scripts)
-- Wallpapers for stylix NixOS module [modules/wallpapers](modules/wallpapers)
+## Config Layout
 
-## Info: 
+- `modules/nixos` – System-level NixOS modules
+- `modules/home` – Home-manager modules
+- `modules/ghost` – Custom config modules (shell, terminal, etc)
+- `modules/scripts` – Shell scripts used in `ghost`
+- `modules/wallpapers` – Backgrounds for use with Stylix
 
-- Stylix - Themeing framework 
-- Foot - Terminal 
-- Catppuccin (mocha) - Main theme 
-- Neovim - Editor 
-- zsh - Shell 
-- Shell Framework - none (custom prompt written in shell + home-manager managed stuff) 
-- Font - IosevkaTerm Nerd Font (pkgs.nerd-fonts.iosevka)
-- Rofi - App launcher 
-- Sway - Window Manager 
-- Autotiling-rs - Tiling manager for sway (master stack layout) 
-- Lockscreen - swaylock-effects
+> *Note: you'll see the nickname `ghost` used throughout this config. It's mine.*
 
-(You'll find me refer to myself as "ghost" in a lot of places, that's a nickname of mine) 
+---
+
+## System Info
+
+| Tool            | Description                      |
+|-----------------|----------------------------------|
+| OS              | NixOS Unstable (flakes)          |
+| WM              | Sway + autotiling-rs (master stack) |
+| Terminal        | Foot (daemon-mode)               |
+| Theme           | Catppuccin Mocha via Stylix      |
+| Font            | IosevkaTerm Nerd Font            |
+| Shell           | Zsh (no framework, fully custom) |
+| App Launcher    | Rofi                             |
+| Lock Screen     | swaylock-effects                 |
+| Editor          | Neovim (LSP, tree-sitter)        |
+
+---
+
+## Configuration layout in tree format: 
+
+```bash
+tree
+.
+├── flake.lock
+├── flake.nix
+├── ghost.nix
+├── modules
+│   ├── ghost
+│   │   ├── bat
+│   │   │   └── catppuccin.tmTheme
+│   │   ├── default.nix
+│   │   ├── dev.nix
+│   │   ├── librewolf.nix
+│   │   ├── rofi
+│   │   │   ├── ctp-rofi.rasi
+│   │   │   └── rofi.rasi
+│   │   ├── shell-scripts.nix
+│   │   ├── terminal
+│   │   │   └── foot.ini
+│   │   ├── tmux
+│   │   │   └── tmux.conf
+│   │   └── zsh
+│   │       ├── ctp_mocha.zsh
+│   │       ├── git-zsh.zsh
+│   │       └── initContent.zsh
+│   ├── home
+│   │   ├── default.nix
+│   │   ├── general.nix
+│   │   ├── swaync.nix
+│   │   ├── swaync-style.css
+│   │   └── sway.nix
+│   ├── nixos
+│   │   ├── bluetooth.nix
+│   │   ├── boot.nix
+│   │   ├── configuration.nix
+│   │   ├── default.nix
+│   │   ├── dm-de.nix
+│   │   ├── fonts.nix
+│   │   ├── gnupg.nix
+│   │   ├── hardware-configuration.nix
+│   │   ├── hardware.nix
+│   │   ├── locale-things.nix
+│   │   ├── man.nix
+│   │   ├── nix.nix
+│   │   ├── pipewire-wireplumber.nix
+│   │   ├── printing.nix
+│   │   ├── security.nix
+│   │   ├── some-services.nix
+│   │   ├── stylix.nix
+│   │   ├── syncthing.nix
+│   │   ├── systemPackages.nix
+│   │   ├── user.nix
+│   │   └── virtualization.nix
+│   ├── scripts
+│   │   ├── i3-tile.sh
+│   │   ├── install_neovim.sh
+│   │   ├── lock.sh
+│   │   ├── maim.sh
+│   │   ├── rebuild.sh
+│   │   ├── sesh_start.sh
+│   │   ├── speedfiles.sh
+│   │   ├── swappy.sh
+│   │   └── swayidle.sh
+│   └── wallpapers
+│       ├── after.png
+│       └── to.jpg
+├── README.md
+└── screenshots
+    └── latest.png
+
+13 directories, 54 files
+```
