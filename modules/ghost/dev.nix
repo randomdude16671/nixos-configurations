@@ -17,12 +17,8 @@ in {
     default = false;
     description = "Enable Ghost's Dev Tools.";
   };
-
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      bat-extras.batman
-      bat-extras.batdiff
-      bat-extras.batpipe
       bat
       hyperfine
       zk

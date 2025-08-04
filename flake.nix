@@ -32,7 +32,7 @@
     };
     lib = pkgs.lib;
   in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.hydra = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
@@ -57,7 +57,7 @@
             vimAlias = true;
           };
         }
-        ./configuration.nix
+        ./modules/nixos/configuration.nix
       ];
     };
     formatter.${system} = pkgs.alejandra;

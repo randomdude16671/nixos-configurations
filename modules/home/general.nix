@@ -22,7 +22,7 @@
     targets = {
       qt.enable = true;
       fzf.enable = false;
-      librewolf.enable = false;
+      librewolf.profileNames = ["ghost"];
     };
   };
 }

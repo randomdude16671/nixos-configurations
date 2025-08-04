@@ -13,9 +13,6 @@ function zvm_after_lazy_keybindings() {
 	zvm_bindkey vicmd '^K' sesh_start 
 }
 
-eval "$(batpipe)"
-eval "$(batman --export-env)"
-
 source ~/.zsh/ctp_mocha.zsh
 export FZF_DEFAULT_OPTS=" \
 	--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
@@ -24,7 +21,6 @@ export FZF_DEFAULT_OPTS=" \
 	--color=selected-bg:#45475A \
 	--color=border:#313244,label:#CDD6F4"
 source ~/.zsh/git-aliases.zsh
-
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' formats '%F{blue}git:(%F{red}%b%F{blue})%f %u%c'
@@ -41,8 +37,20 @@ prompt_dir() {
 		echo "%F{cyan}%B%c%b%f"
 	fi
 }
+
+nix_shell_rprompt() {
+  if [[ -n "$name" ]]; then 
+    echo "%F{cyan}[ ]%f"
+  elif [[ -n "$IN_NIX_SHELL" ]]; then 
+    echo "%F{cyan}[ ]%f"
+  elif [[ -n "$NIX_SHELL_PACKAGES" ]]; then 
+    echo "%F{cyan}[ ]%f"
+  fi
+}
+
 prompt_arrow() {
-	[[ $? -eq 0 ]] && echo "%F{green}>%f" || echo "%F{red}<%f"
+	[[ $? -eq 0 ]] && echo "%F{green}➜%f" || echo "%F{red}➜%f"
 }
 setopt PROMPT_SUBST
 PROMPT=' $(prompt_arrow)  $(prompt_dir) ${vcs_info_msg_0_}' 
+RPROMPT='$(nix_shell_rprompt)' 

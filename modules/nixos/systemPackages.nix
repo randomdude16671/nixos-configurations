@@ -13,7 +13,6 @@
     # terminal emulator, also include neovim in unstable flake.
     zed-editor
     obsidian
-    foot
     alsa-utils
     spotify
     gocryptfs
@@ -22,4 +21,10 @@
     man-pages-posix
     glow
   ];
+
+  programs.foot = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+  };
 }
