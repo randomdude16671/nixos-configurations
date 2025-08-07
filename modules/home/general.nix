@@ -7,6 +7,7 @@
     pkgs.vesktop
     pkgs.imv
     pkgs.wl-clipboard
+    pkgs.zed-editor
   ];
   gtk = {
     enable = true;
@@ -23,6 +24,7 @@
       qt.enable = true;
       fzf.enable = false;
       librewolf.profileNames = ["ghost"];
+      foot.enable = false;
     };
   };
 }

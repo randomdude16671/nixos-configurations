@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   stylix.enable = true;
@@ -25,6 +26,6 @@
     size = 24;
   };
   stylix.autoEnable = true;
-  stylix.image = ../wallpapers/after.png; # goodbye to.jpg (I used that exact file for years)
+  stylix.image = ../wallpapers/nix.png; # New Nix wallpaper
   stylix.polarity = "dark";
 }
