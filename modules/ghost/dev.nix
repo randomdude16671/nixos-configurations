@@ -4,14 +4,16 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.ghost.dev;
   zshInitContent = builtins.readFile ./zsh/initContent.zsh;
   tmuxConf = builtins.concatStringsSep "\n" [
     "set-option -g default-shell ${pkgs.zsh}/bin/zsh"
     (builtins.readFile ./tmux/tmux.conf)
   ];
-in {
+in
+{
   options.ghost.dev.enable = mkOption {
     type = types.bool;
     default = false;
@@ -87,11 +89,10 @@ in {
     # terminal
     programs.foot = {
       enable = true;
-      server.enable = true;
       settings = {
         main = {
           font = "IosevkaTerm Nerd Font:size=11.5";
-          "dpi-aware" = "yes";
+          dpi-aware = "yes";
           term = "foot";
         };
 
@@ -121,13 +122,13 @@ in {
           "16" = "fab387";
           "17" = "f5e0dc";
 
-          "selection-foreground" = "cdd6f4";
-          "selection-background" = "414356";
+          selection-foreground = "cdd6f4";
+          selection-background = "414356";
 
-          "search-box-no-match" = "11111b f38ba8";
-          "search-box-match" = "cdd6f4 313244";
+          search-box-no-match = "11111b f38ba8";
+          search-box-match = "cdd6f4 313244";
 
-          "jump-labels" = "11111b fab387";
+          jump-labels = "11111b fab387";
           urls = "89b4fa";
         };
       };

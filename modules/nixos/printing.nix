@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services = {
     printing = {
       enable = true;
@@ -16,8 +17,8 @@
       publish.enable = true;
       publish.userServices = true;
     };
-    udev.packages = [pkgs.sane-backends];
+    udev.packages = [ pkgs.sane-backends ];
   };
-  networking.firewall.allowedTCPPorts = [631];
-  security.pam.services.cups = {};
+  networking.firewall.allowedTCPPorts = [ 631 ];
+  security.pam.services.cups = { };
 }

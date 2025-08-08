@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = [
     pkgs.authenticator
     pkgs.i3status
@@ -23,7 +24,7 @@
     targets = {
       qt.enable = true;
       fzf.enable = false;
-      librewolf.profileNames = ["ghost"];
+      librewolf.profileNames = [ "ghost" ];
       foot.enable = false;
     };
   };

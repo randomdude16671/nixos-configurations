@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     slurp
     grim
@@ -30,6 +31,10 @@
           always = true;
         }
         {
+          command = "${pkgs.foot}/bin/foot --server &";
+          always = true;
+        }
+        {
           command = "autotiling-rs";
           always = true;
         }
@@ -45,12 +50,13 @@
       };
       modifier = "Mod4";
       fonts = {
-        names = ["Iosevka Term Nerd Font"];
+        names = [ "Iosevka Term Nerd Font" ];
         style = "Regular";
       };
-      keybindings = let
-        modifier = config.wayland.windowManager.sway.config.modifier;
-      in
+      keybindings =
+        let
+          modifier = config.wayland.windowManager.sway.config.modifier;
+        in
         lib.mkOptionDefault {
           "${modifier}+Return" = "exec footclient";
           "${modifier}+t" = "layout tabbed";
@@ -75,7 +81,7 @@
           "${modifier}+s" = "layout stacking";
         };
       defaultWorkspace = "workspace number 1";
-      bars = [];
+      bars = [ ];
 
       window = {
         border = 2;

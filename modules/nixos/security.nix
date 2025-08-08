@@ -6,17 +6,17 @@
       enable = true;
       extraRules = [
         {
-          users = ["ghost"];
+          users = [ "ghost" ];
           keepEnv = true;
           persist = true;
         }
         {
-          users = ["ghost"];
+          users = [ "ghost" ];
           cmd = "vi";
           noPass = true;
         }
         {
-          users = ["ghost"];
+          users = [ "ghost" ];
           cmd = "nvim";
           noPass = true;
         }

@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.ghost.browser;
-in {
+in
+{
   options.ghost.browser.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;
@@ -13,7 +15,7 @@ in {
   };
   options.ghost.browser.extensions = lib.mkOption {
     type = lib.types.listOf lib.types.package;
-    default = [];
+    default = [ ];
     description = "Extensions to install";
   };
   config = lib.mkIf cfg.enable {
@@ -49,7 +51,7 @@ in {
               ];
 
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = ["nx"];
+              definedAliases = [ "nx" ];
             };
           };
         };
