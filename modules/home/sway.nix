@@ -6,17 +6,19 @@
 }:
 {
   home.packages = with pkgs; [
-    slurp
-    grim
-    swappy
-    autotiling-rs
-    brightnessctl
-    playerctl
-    i3status
+    slurp # select screen regions like a pro
+    grim # screenshots, but grim
+    swappy # annotate like you mean it
+    autotiling-rs # because manual tiling is for people with too much time
+    brightnessctl # control the brightness like a masochist
+    playerctl # music control for people too focused to move to different workspaces
+    i3status # bottom bar filler so it’s not lonely
   ];
+
   wayland.windowManager.sway = {
     enable = true;
     config = {
+      # Autostart programs; yes, these **will** eat your RAM  (that's why theres only 5)
       startup = [
         {
           command = "~/scripts/swayidle.sh";
@@ -39,6 +41,8 @@
           always = true;
         }
       ];
+
+      # Input settings; swap caps/escape because Vim supremacy
       input = {
         "*" = {
           xkb_options = "caps:swapescape";
@@ -48,38 +52,49 @@
           repeat_rate = "40";
         };
       };
-      modifier = "Mod4";
+
+      modifier = "Mod4"; # Super key; Cuz I'm a super boy and not an alt boy lol
+
       fonts = {
-        names = [ "Iosevka Term Nerd Font" ];
+        names = [ "IosevkaTerm Nerd Font" ];
         style = "Regular";
       };
+
+      # Keybindings; muscle memory over sanity
       keybindings =
         let
-          modifier = config.wayland.windowManager.sway.config.modifier;
+          mod = config.wayland.windowManager.sway.config.modifier;
         in
         lib.mkOptionDefault {
-          "${modifier}+Return" = "exec footclient";
-          "${modifier}+t" = "layout tabbed";
-          "${modifier}+b" = "exec librewolf";
-          "${modifier}+d" = "exec rofi -show drun";
-          "${modifier}+Shift+S" = "exec ~/scripts/maim.sh";
-          "${modifier}+Shift+D" = "exec ~/scripts/swappy.sh";
+          "${mod}+Return" = "exec footclient";
+          "${mod}+t" = "layout tabbed";
+          "${mod}+b" = "exec librewolf";
+          "${mod}+d" = "exec rofi -show drun";
+          "${mod}+Shift+S" = "exec ~/scripts/maim.sh";
+          "${mod}+Shift+D" = "exec ~/scripts/swappy.sh";
+
+          # Media keys: press for dopamine
           "XF86AudioRaiseVolume" = "exec swayosd-client --output-volume +5";
           "XF86AudioLowerVolume" = "exec swayosd-client --output-volume -5";
           "XF86AudioMute" = "exec swayosd-client --output-volume mute-toggle";
           "XF86MonBrightnessUp" = "exec swayosd-client --brightness +5";
           "XF86MonBrightnessDown" = "exec swayosd-client --brightness -5";
           "XF86AudioMicMute" = "exec swayosd-client --input-volume mute-toggle";
-          "${modifier}+Shift+n" = "exec playerctl next";
-          "${modifier}+Shift+p" = "exec playerctl previous";
-          "${modifier}+p" = "exec swaync-client -t"; # open panel/close panel
-          "${modifier}+w" = "kill";
-          "${modifier}+h" = "focus left";
-          "${modifier}+j" = "focus down";
-          "${modifier}+k" = "focus up";
-          "${modifier}+l" = "focus right";
-          "${modifier}+s" = "layout stacking";
+
+          "${mod}+Shift+n" = "exec playerctl next";
+          "${mod}+Shift+p" = "exec playerctl previous";
+          "${mod}+q" = "exec playerctl play-pause";
+          "${mod}+p" = "exec swaync-client -t"; # toggle notifications panel
+
+          # Window control; because I don't like to scream "MOVE DAMMIT" at my screen
+          "${mod}+w" = "kill";
+          "${mod}+h" = "focus left";
+          "${mod}+j" = "focus down";
+          "${mod}+k" = "focus up";
+          "${mod}+l" = "focus right";
+          "${mod}+s" = "layout stacking";
         };
+
       defaultWorkspace = "workspace number 1";
       bars = [ ];
 
@@ -88,9 +103,11 @@
         titlebar = false;
       };
     };
+
+    # Extra Sway config for i3-style bar, retro but functional
     extraConfig = ''
       bar {
-        font pango:Iosevka Term Nerd Font 11
+        font pango:IosevkaTerm Nerd Font 11
         mode dock
         hidden_state hide
         position bottom
@@ -111,6 +128,7 @@
     '';
   };
 
+  # Lock screen: swaylock-effects because plain swaylock is ugly
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
