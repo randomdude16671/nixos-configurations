@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
- swaylock --font "Iosevka Term Nerd Font" \
+ swaylock --font "IosevkaTerm Nerd Font" \
   --clock \
   --indicator \
   --indicator-radius 100 \

@@ -60,7 +60,7 @@ alias gcs='git commit --gpg-sign'
 alias gcsm='git commit --signoff --message'
 alias gcss='git commit --gpg-sign --signoff'
 alias gcssm='git commit --gpg-sign --signoff --message'
-alias gd='git diff'
+alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
 alias gdca='git diff --cached'
 alias gdct='git describe --tags $(git rev-list --tags --max-count=1)'
 alias gdcw='git diff --cached --word-diff'
@@ -84,7 +84,7 @@ alias git-svn-dcommit-push='git svn dcommit && git push github $(git_main_branch
 alias gk='\gitk --all --branches &!'
 alias gke='\gitk --all $(git log --walk-reflogs --pretty=%h) &!'
 alias gl='git pull'
-alias glg='git log --stat'
+alias glg="git log --all --graph --pretty=\"format:'%C(magenta)%h%Creset %C(white)%an%Creset %ar%C(auto)%d%n%s%n'\""
 alias glgg='git log --graph'
 alias glgga='git log --graph --decorate --all'
 alias glgm='git log --graph --max-count=10'

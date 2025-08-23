@@ -14,7 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix.url = "github:nix-community/stylix";
-    nixos-cli.url = "github:nix-community/nixos-cli";
   };
 
   outputs =
@@ -25,7 +24,6 @@
       stylix,
       volt-build,
       nur,
-      nixos-cli,
       ...
     }@inputs:
     let

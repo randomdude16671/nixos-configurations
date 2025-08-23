@@ -13,12 +13,12 @@
       name = "IosevkaTerm Nerd Font";
     };
     sansSerif = {
-      package = pkgs.nerd-fonts.jetbrains-mono;
-      name = "JetBrainsMono Nerd Font";
+      package = pkgs.adwaita-fonts;
+      name = "Adwaita Sans";
     };
     serif = {
-      package = pkgs.nerd-fonts.jetbrains-mono;
-      name = "JetBrainsMono Nerd Font";
+      package = pkgs.adwaita-fonts;
+      name = "Adwaita Sans";
     };
   };
   stylix.cursor = {
@@ -27,6 +27,6 @@
     size = 24;
   };
   stylix.autoEnable = true;
-  stylix.image = ../wallpapers/nix.png; # New Nix wallpaper
+  stylix.image = ../wallpapers/after.png;
   stylix.polarity = "dark";
 }

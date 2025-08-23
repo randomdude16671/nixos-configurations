@@ -56,7 +56,7 @@ in
           };
         };
         settings = {
-          "browser.startup.homepage" = "file:///home/ghost/Project/homepage/index.html";
+          "browser.startup.homepage" = "file:///home/ghost/Programming/homepage/index.html";
           "signon.rememberSignons" = true;
         };
         extensions.packages = cfg.extensions;

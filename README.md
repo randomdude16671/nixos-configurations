@@ -27,7 +27,7 @@
 | WM              | Sway + autotiling-rs (master stack) |
 | Terminal        | Foot (daemon-mode)               |
 | Theme           | Catppuccin Mocha via Stylix      |
-| Font            | IosevkaTerm Nerd Font            |
+| Font            | Iosevka Term Nerd Font                     |
 | Shell           | Zsh (no framework, fully custom) |
 | App Launcher    | Rofi                             |
 | Lock Screen     | swaylock-effects                 |
