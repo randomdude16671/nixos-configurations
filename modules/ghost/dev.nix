@@ -10,6 +10,7 @@ let
   zshInitContent = builtins.readFile ./zsh/initContent.zsh;
   tmuxConf = builtins.concatStringsSep "\n" [
     "set-option -g default-shell ${pkgs.zsh}/bin/zsh"
+		"set-option -g default-command '${pkgs.zsh}/bin/zsh -l'"
     (builtins.readFile ./tmux/tmux.conf)
   ];
 in
@@ -23,14 +24,13 @@ in
     home.packages = with pkgs; [
       bat
       hyperfine
-      zk
+			skim
       sesh
       zoxide
       btop
       fd
       arduino-ide
       eza
-      gum
       tmux
       ripgrep
       gh
@@ -49,6 +49,10 @@ in
     xdg.configFile = {
       # terminal
       "tmux/tmux.conf".text = tmuxConf;
+			"tmux/navigator.tmux" = { 
+				source = ./tmux/vim-tmux-navigator.tmux; 
+				executable = true; 
+			}; 
 
       # cat alternative
       "bat/themes/Catppuccin_Mocha.tmTheme".source = ./bat/catppuccin.tmTheme;

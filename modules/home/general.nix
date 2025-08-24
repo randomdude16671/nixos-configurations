@@ -5,7 +5,6 @@
     pkgs.i3status
     pkgs.rofi-wayland
     pkgs.nixd
-    pkgs.vesktop
     pkgs.imv
     pkgs.wl-clipboard
     pkgs.zed-editor

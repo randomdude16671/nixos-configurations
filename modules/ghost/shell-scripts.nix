@@ -3,9 +3,7 @@
   config,
   ...
 }:
-let
-  cfg = config.ghost.scripts;
-in
+let cfg = config.ghost.scripts; in
 {
   options.ghost.scripts.enable = lib.mkOption {
     type = lib.types.bool;
@@ -51,6 +49,10 @@ in
         source = ./../scripts/swayidle.sh;
         executable = true;
       };
+			"scripts/sesh_session_switch.sh" = {
+				source = ./../scripts/sesh_session_switch.sh; 
+				executable = true; 
+			};
     };
   };
 }

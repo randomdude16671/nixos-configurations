@@ -5,5 +5,7 @@
     package = pkgs.sway;
     xwayland.enable = true;
   };
-  services.displayManager.ly.enable = true;
+  services.displayManager.ly = { 
+		enable = true; 
+	}; 
 }

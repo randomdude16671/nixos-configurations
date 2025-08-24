@@ -3,7 +3,6 @@
 > A clean, minimal, fully declarative NixOS + Sway config with <400MB RAM idle usage.  
 > Designed for speed, full control, and zero bloat.
 
-(screenshot needs update)
 ![Hydra in action](screenshots/latest.png)
 
 ---

@@ -2,23 +2,19 @@
 
 search_with_zoxdie() {
     if [ -z "$1" ]; then
-        # use fd with fzf to select & open a file when no arg are provided
-        file="$(fd --type f -I -H -E .git -E .git-crypt -E .cache -E .backup | fzf --height=70% --preview='bat -n --color=always --line-range :500 {}' --border)"
+        file="$(fd --type f -I -H -E .git -E .git-crypt -E .cache -E .backup | sk --height=70% --preview='bat -n --color=always --line-range :500 {}' --border)"
         if [ -n "$file" ]; then
             nvim "$file"
         fi
     else
-        # Handle when an arg is provided
-        lines=$(zoxide query -l | xargs -I {} fd --type f -I -H -E .git -E .git-crypt -E .cache -E .backup -E .vscode "$1" {} | fzf --no-sort) # Initial filter attempt with fzf
-        line_count="$(echo "$lines" | wc -l | xargs)" # Trim any leading spaces
+        lines=$(zoxide query -l | xargs -I {} fd --type f -I -H -E .git -E .git-crypt -E .cache -E .backup -E .vscode "$1" {} | sk --no-sort) 
+        line_count="$(echo "$lines" | wc -l | xargs)" 
 
         if [ -n "$lines" ] && [ "$line_count" -eq 1 ]; then
-            # looks for the exact ones and opens it
             file="$lines"
             nvim "$file"
         elif [ -n "$lines" ]; then
-            # If multiple files are found, allow further selection using fzf and bat for preview
-            file=$(echo "$lines" | fzf --query="$1" --height=70% --preview='bat -n --color=always --line-range :500 {}')
+            file=$(echo "$lines" | sk --query="$1" --height=70% --preview='bat -n --color=always --line-range :500 {}')
             if [ -n "$file" ]; then
                 nvim "$file"
             fi
