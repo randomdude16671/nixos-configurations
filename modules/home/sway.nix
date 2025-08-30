@@ -29,11 +29,11 @@
           always = true;
         }
         {
-          command = "swayosd-server";
-          always = true;
+          command = "${pkgs.foot}/bin/foot --server";
+          always = true; 
         }
         {
-          command = "${pkgs.foot}/bin/foot --server &";
+          command = "swayosd-server";
           always = true;
         }
         {

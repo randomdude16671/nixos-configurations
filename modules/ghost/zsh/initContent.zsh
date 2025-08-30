@@ -16,8 +16,8 @@ function speedfiles() {
 
 function zvm_after_lazy_keybindings() {
 	zvm_define_widget sesh_start
-	zvm_bindkey vicmd '^K' sesh_start 
-	zvm_bindkey vicmd '^P' speedfiles 
+	zvm_bindkey vicmd '^F' sesh_start 
+	zvm_bindkey vicmd '^O' speedfiles 
 }
 
 source ~/.zsh/ctp_mocha.zsh

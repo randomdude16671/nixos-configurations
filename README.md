@@ -25,7 +25,7 @@
 |-----------------|----------------------------------|
 | OS              | NixOS Unstable (flakes)          |
 | WM              | Sway + autotiling-rs (master stack) |
-| Terminal        | Foot (daemon-mode)               |
+| Terminal        | Kitty               |
 | Theme           | Catppuccin Mocha via Stylix      |
 | Font            | Iosevka Term Nerd Font                     |
 | Shell           | Zsh (no framework, fully custom) |

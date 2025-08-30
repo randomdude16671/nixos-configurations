@@ -21,6 +21,7 @@
         vimium
         new-tab-override
         youtube-recommended-videos # unhook
+        proton-pass
       ];
     };
   };

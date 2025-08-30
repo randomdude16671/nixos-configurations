@@ -7,8 +7,8 @@ search_with_zoxdie() {
             nvim "$file"
         fi
     else
-        lines=$(zoxide query -l | xargs -I {} fd --type f -I -H -E .git -E .git-crypt -E .cache -E .backup -E .vscode "$1" {} | sk --no-sort) 
-        line_count="$(echo "$lines" | wc -l | xargs)" 
+        lines=$(zoxide query -l | xargs -I {} fd --type f -I -H -E .git -E .git-crypt -E .cache -E .backup -E .vscode "$1" {} | sk --no-sort)
+        line_count="$(echo "$lines" | wc -l | xargs)"
 
         if [ -n "$lines" ] && [ "$line_count" -eq 1 ]; then
             file="$lines"

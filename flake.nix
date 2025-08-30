@@ -30,7 +30,7 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ nur.overlay ];
+        overlays = [ nur.overlays.default ];
       };
       lib = pkgs.lib;
     in
