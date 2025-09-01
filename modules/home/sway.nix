@@ -30,7 +30,7 @@
         }
         {
           command = "${pkgs.foot}/bin/foot --server";
-          always = true; 
+          always = true;
         }
         {
           command = "swayosd-server";
@@ -115,7 +115,7 @@
         strip_workspace_numbers no
         tray_output primary
         colors {
-          background #11111b
+          background #222222
           statusline #ffffff
           separator #666666
           focused_workspace #4c7899 #285577 #ffffff

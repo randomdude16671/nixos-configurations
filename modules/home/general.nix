@@ -3,12 +3,10 @@
   home.packages = [
     pkgs.i3status
     pkgs.rofi-wayland
-    pkgs.nixd
     pkgs.imv
     pkgs.wl-clipboard
     pkgs.proton-pass
     pkgs.proton-authenticator
-    pkgs.zed-editor
     pkgs.notesnook
   ];
   gtk = {

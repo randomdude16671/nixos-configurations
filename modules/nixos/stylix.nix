@@ -27,6 +27,6 @@
     size = 24;
   };
   stylix.autoEnable = true;
-  stylix.image = ../wallpapers/after.png;
+  stylix.image = ../wallpapers/warrior.png;
   stylix.polarity = "dark";
 }
