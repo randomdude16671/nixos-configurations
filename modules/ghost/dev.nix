@@ -96,7 +96,7 @@ in
       settings = {
         main = {
           font = "IosevkaTerm Nerd Font:size=11.5";
-          dpi-aware = "yes";
+          dpi-aware = true;
           term = "foot";
         };
 

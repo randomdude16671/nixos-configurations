@@ -115,7 +115,7 @@
         strip_workspace_numbers no
         tray_output primary
         colors {
-          background #222222
+          background #222222E5 
           statusline #ffffff
           separator #666666
           focused_workspace #4c7899 #285577 #ffffff

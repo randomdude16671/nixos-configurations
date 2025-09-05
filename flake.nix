@@ -42,7 +42,7 @@
           nur.modules.nixos.default
           {
             home-manager.useGlobalPkgs = true;
-            home-manager.backupFileExtension = "hm.bak";
+            home-manager.backupFileExtension = "hm.backup";
             home-manager.users.ghost = {
               home.packages = [
                 volt-build.packages."${system}".default
