@@ -2,18 +2,24 @@
   description = "Ghost's NixOS Flake.";
 
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    neovim.url = "github:nix-community/neovim-nightly-overlay";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    volt-build.url = "github:volt-build/volt-build/main";
-    neovim.url = "github:nix-community/neovim-nightly-overlay";
+    volt-build = {
+      url = "github:volt-build/volt-build/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = "github:nix-community/stylix";
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -24,13 +30,17 @@
       stylix,
       volt-build,
       nur,
+      neovim,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ nur.overlays.default ];
+        overlays = [
+          nur.overlays.default
+          neovim.overlays.default
+        ];
       };
       lib = pkgs.lib;
     in
@@ -58,7 +68,7 @@
           {
             programs.neovim = {
               enable = true;
-              package = inputs.neovim.packages.${system}.default;
+              package = pkgs.neovim; # just in case, you feel me?
               viAlias = true;
               vimAlias = true;
             };

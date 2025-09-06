@@ -15,10 +15,8 @@ let
   ];
 in
 {
-  options.ghost.dev.enable = mkOption {
-    type = types.bool;
-    default = false;
-    description = "Enable Ghost's Dev Tools.";
+  options.ghost.dev = {
+    enable = mkEnableOption "Enable Ghost's dev tools";
   };
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -95,7 +93,7 @@ in
       enable = true;
       settings = {
         main = {
-          font = "IosevkaTerm Nerd Font:size=11.5";
+          font = "IosevkaTerm Nerd Font:size=11";
           dpi-aware = true;
           term = "foot";
         };

@@ -28,6 +28,21 @@ in
         search = {
           default = "ddg";
           engines = {
+            perplexity = {
+              name = "Perplexity AI";
+              urls = [
+                {
+                  template = "https://perplexity.ai";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              definedAliases = [ "prx" ];
+            };
             nixos-options = {
               name = "NixOS Options";
               urls = [
