@@ -22,7 +22,6 @@ in
     home.packages = with pkgs; [
       bat
       hyperfine
-      skim
       sesh
       zoxide
       btop
@@ -30,7 +29,6 @@ in
       arduino-ide
       eza
       tmux
-      ripgrep
       gh
       duf
     ];

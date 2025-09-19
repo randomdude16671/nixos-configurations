@@ -2,7 +2,7 @@
 {
   home.packages = [
     pkgs.i3status
-    pkgs.rofi-wayland
+    pkgs.rofi
     pkgs.imv
     pkgs.wl-clipboard
     pkgs.proton-pass
@@ -23,8 +23,9 @@
     targets = {
       qt.enable = true;
       fzf.enable = false;
-      librewolf.profileNames = [ "ghost" ];
+      zen-browser.enable = false;
       foot.enable = false;
+      vesktop.enable = false;
     };
   };
 }

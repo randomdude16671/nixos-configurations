@@ -16,6 +16,10 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +35,7 @@
       volt-build,
       nur,
       neovim,
+      zen-browser,
       ...
     }@inputs:
     let
@@ -51,19 +56,20 @@
         modules = [
           nur.modules.nixos.default
           {
-            home-manager = { 
+            home-manager = {
               useGlobalPkgs = true;
-              useUserPackages = true; 
-              backupFileExtension = "old.bak";
+              useUserPackages = true;
+              backupFileExtension = "old.hm.bak";
               users.ghost = {
                 home.packages = [
                   volt-build.packages."${system}".default
                 ];
                 imports = [
                   ./ghost.nix
+                  zen-browser.homeModules.beta # get the programs.zen-browser module into HM
                 ];
               };
-            }; 
+            };
           }
           {
             nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
@@ -72,6 +78,7 @@
             programs.neovim = {
               enable = true;
               package = pkgs.neovim; # just in case, you feel me?
+              defaultEditor = true;
               viAlias = true;
               vimAlias = true;
             };

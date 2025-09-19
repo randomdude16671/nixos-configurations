@@ -15,4 +15,5 @@
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Kolkata";
   system.stateVersion = "25.05";
+
 }

@@ -7,6 +7,9 @@
 {
   stylix.enable = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  stylix.opacity = {
+    terminal = 0.9;
+  };
   stylix.fonts = {
     monospace = {
       package = pkgs.nerd-fonts.iosevka-term;

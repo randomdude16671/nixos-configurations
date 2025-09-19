@@ -68,7 +68,7 @@
         lib.mkOptionDefault {
           "${mod}+Return" = "exec footclient";
           "${mod}+t" = "layout tabbed";
-          "${mod}+b" = "exec librewolf";
+          "${mod}+b" = "exec zen";
           "${mod}+d" = "exec rofi -show drun";
           "${mod}+Shift+S" = "exec ~/scripts/maim.sh";
           "${mod}+Shift+D" = "exec ~/scripts/swappy.sh";
@@ -112,8 +112,9 @@
         hidden_state hide
         position bottom
         status_command i3status
-        strip_workspace_numbers no
         tray_output primary
+        tray_padding 2
+        icon_theme "Adwaita-dark"
         colors {
           background #222222E5 
           statusline #ffffff

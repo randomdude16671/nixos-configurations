@@ -13,13 +13,16 @@
   ghost = {
     dev.enable = true;
     scripts.enable = true;
+    vesktop = {
+      enable = true;
+      useSystem = false;
+    };
     browser = {
       enable = true;
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         darkreader
         ghostery
         vimium
-        new-tab-override
         youtube-recommended-videos # unhook
         proton-pass
       ];

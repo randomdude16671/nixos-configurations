@@ -1,3 +1,4 @@
+# auto get Nix files :moai:
 { lib, ... }:
 let
   inherit (builtins) readDir attrNames foldl';

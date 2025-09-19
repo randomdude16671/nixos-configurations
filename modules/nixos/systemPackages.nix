@@ -14,6 +14,8 @@ let
     nixd
     man-pages-posix
     glow
+    nixfmt-rfc-style
+    ripgrep
     ;
 in
 {
@@ -22,11 +24,13 @@ in
     gitFull
     gnupg
     alsa-utils
+    ripgrep
     spotify
     gocryptfs
     man-pages
     nixd
     man-pages-posix
     glow
+    nixfmt-rfc-style
   ];
 }

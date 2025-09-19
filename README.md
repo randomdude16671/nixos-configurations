@@ -38,7 +38,6 @@
 ## Configuration layout in tree format: 
 
 ```bash
-tree
 .
 ├── flake.lock
 ├── flake.nix
@@ -47,17 +46,20 @@ tree
 │   ├── ghost
 │   │   ├── bat
 │   │   │   └── catppuccin.tmTheme
+│   │   ├── browser.nix
 │   │   ├── default.nix
 │   │   ├── dev.nix
-│   │   ├── librewolf.nix
 │   │   ├── rofi
 │   │   │   ├── ctp-rofi.rasi
 │   │   │   └── rofi.rasi
 │   │   ├── shell-scripts.nix
-│   │   ├── terminal
-│   │   │   └── foot.ini
+│   │   ├── terminal.backups
+│   │   │   ├── foot.ini
+│   │   │   └── ghostty.conf
 │   │   ├── tmux
-│   │   │   └── tmux.conf
+│   │   │   ├── tmux.conf
+│   │   │   └── vim-tmux-navigator.tmux
+│   │   ├── vesktop.nix
 │   │   └── zsh
 │   │       ├── ctp_mocha.zsh
 │   │       ├── git-zsh.zsh
@@ -74,7 +76,6 @@ tree
 │   │   ├── configuration.nix
 │   │   ├── default.nix
 │   │   ├── dm-de.nix
-│   │   ├── fonts.nix
 │   │   ├── gnupg.nix
 │   │   ├── hardware-configuration.nix
 │   │   ├── hardware.nix
@@ -82,7 +83,6 @@ tree
 │   │   ├── man.nix
 │   │   ├── nix.nix
 │   │   ├── pipewire-wireplumber.nix
-│   │   ├── printing.nix
 │   │   ├── security.nix
 │   │   ├── some-services.nix
 │   │   ├── stylix.nix
@@ -96,16 +96,20 @@ tree
 │   │   ├── lock.sh
 │   │   ├── maim.sh
 │   │   ├── rebuild.sh
+│   │   ├── sesh_session_switch.sh
 │   │   ├── sesh_start.sh
 │   │   ├── speedfiles.sh
 │   │   ├── swappy.sh
 │   │   └── swayidle.sh
 │   └── wallpapers
 │       ├── after.png
-│       └── to.jpg
+│       ├── nix.png
+│       ├── romb.png
+│       ├── to.jpg
+│       └── warrior.png
 ├── README.md
 └── screenshots
     └── latest.png
 
-13 directories, 54 files
+13 directories, 59 files
 ```
