@@ -11,7 +11,9 @@
   ];
   # custom modules
   ghost = {
-    dev.enable = true;
+    dev = {
+      enable = true;
+    };
     scripts.enable = true;
     vesktop = {
       enable = true;

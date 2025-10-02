@@ -56,6 +56,15 @@
         modules = [
           nur.modules.nixos.default
           {
+            programs.neovim = {
+              package = pkgs.neovim;
+              enable = true;
+              viAlias = true;
+              vimAlias = true;
+              defaultEditor = true;
+            };
+          }
+          {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -73,15 +82,6 @@
           }
           {
             nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-          }
-          {
-            programs.neovim = {
-              enable = true;
-              package = pkgs.neovim; # just in case, you feel me?
-              defaultEditor = true;
-              viAlias = true;
-              vimAlias = true;
-            };
           }
           ./modules/nixos/configuration.nix
         ];

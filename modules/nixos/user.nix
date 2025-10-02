@@ -10,6 +10,8 @@
         "dialout" # arduino ide
         "lpadmin"
         "lp"
+        "video"
+        "input"
         "audio"
       ];
       useDefaultShell = true;

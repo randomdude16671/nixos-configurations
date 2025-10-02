@@ -16,6 +16,7 @@ let
     glow
     nixfmt-rfc-style
     ripgrep
+    mangohud
     ;
 in
 {
@@ -32,5 +33,6 @@ in
     man-pages-posix
     glow
     nixfmt-rfc-style
+    mangohud
   ];
 }

@@ -8,21 +8,23 @@
   home.packages = with pkgs; [
     slurp # select screen regions like a pro
     grim # screenshots, but grim
-    swappy # annotate like you mean it
+    satty # annotate like you mean it (updated: swappy->satty (faster, nicer lookin'))
     autotiling-rs # because manual tiling is for people with too much time
     brightnessctl # control the brightness like a masochist
     playerctl # music control for people too focused to move to different workspaces
-    i3status # bottom bar filler so it’s not lonely
   ];
 
   wayland.windowManager.sway = {
     enable = true;
     config = {
-      # Autostart programs; yes, these **will** eat your RAM  (that's why theres only 5)
       startup = [
         {
           command = "~/scripts/swayidle.sh";
           always = true;
+        }
+        {
+          command = "waybar";
+          always = false;
         }
         {
           command = "swaync &";
@@ -98,35 +100,20 @@
       defaultWorkspace = "workspace number 1";
       bars = [ ];
 
+      gaps = {
+        outer = 6;
+        inner = 6;
+        smartGaps = false;
+      };
       window = {
         border = 2;
         titlebar = false;
       };
+      floating = {
+        border = 2;
+        titlebar = false;
+      };
     };
-
-    # Extra Sway config for i3-style bar, retro but functional
-    extraConfig = ''
-      bar {
-        font pango:IosevkaTerm Nerd Font 11
-        mode dock
-        hidden_state hide
-        position bottom
-        status_command i3status
-        tray_output primary
-        tray_padding 2
-        icon_theme "Adwaita-dark"
-        colors {
-          background #222222E5 
-          statusline #ffffff
-          separator #666666
-          focused_workspace #4c7899 #285577 #ffffff
-          active_workspace #333333 #5f676a #ffffff
-          inactive_workspace #333333 #222222 #888888
-          urgent_workspace #2f343a #900000 #ffffff
-          binding_mode #2f343a #900000 #ffffff
-        }
-      }
-    '';
   };
 
   # Lock screen: swaylock-effects because plain swaylock is ugly

@@ -1,9 +1,7 @@
-# Hydra (Hostname and what I call this configuration) 
+# NixOS configurations for Ghost (randomdude16671)
 
-> A clean, minimal, fully declarative NixOS + Sway config with <400MB RAM idle usage.  
-> Designed for speed, full control, and zero bloat.
-
-![Hydra in action](screenshots/latest.png)
+- Hostname is `hydra`
+- Only user in configuration is `ghost`
 
 ---
 
@@ -113,3 +111,4 @@
 
 13 directories, 59 files
 ```
+

@@ -7,6 +7,7 @@
 {
   stylix.enable = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  stylix.targets.plymouth.enable = false;
   stylix.opacity = {
     terminal = 0.9;
   };
@@ -29,7 +30,10 @@
     name = "Bibata-Modern-Classic";
     size = 24;
   };
+  fonts.packages = [
+    pkgs.nerd-fonts.commit-mono
+  ];
   stylix.autoEnable = true;
-  stylix.image = ../wallpapers/warrior.png;
+  stylix.image = ../wallpapers/romb.png;
   stylix.polarity = "dark";
 }

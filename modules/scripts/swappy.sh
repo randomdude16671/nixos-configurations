@@ -1,1 +1,6 @@
-swappy -f "$HOME/screenshots/latest.png" && wl-copy --type image/png <  "$HOME/screenshots/latest.png" 
+satty --filename "$HOME/screenshots/latest.png" \
+    --early-exit  \
+    --actions-on-enter save-to-clipboard \
+    --save-after-copy \
+    --copy-command 'wl-copy' \
+
