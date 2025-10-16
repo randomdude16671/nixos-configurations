@@ -30,8 +30,10 @@ in
       sesh
       tmux
       zoxide
+      swaybg
     ];
 
+    programs.bat.enable = true;
     home.file = {
       ".zsh/ctp-mocha.zsh".source = ./zsh/ctp-mocha.zsh;
       ".zsh/git-aliases.zsh".source = ./zsh/git-zsh.zsh;
@@ -43,6 +45,7 @@ in
       DIRENV_WARN_TIMEOUT = 0;
       EDITOR = "nvim";
       ZVM_CURSOR_STYLE_ENABLED = "false";
+      GTK_THEME = "adw-gtk3";
     };
 
     xdg.configFile = {
@@ -51,15 +54,7 @@ in
         source = ./tmux/vim-tmux-navigator.tmux;
         executable = true;
       };
-
-      "bat/themes/Catppuccin_Mocha.tmTheme".source = ./bat/catppuccin.tmTheme;
-      "bat/config".text = ''
-        --theme='Catppuccin_Mocha'
-        --pager='less -FR'
-      '';
-
       "rofi/config.rasi".source = ./rofi/rofi.rasi;
-      "rofi/themes/catppuccin-mocha.rasi".source = ./rofi/ctp-rofi.rasi;
     };
 
     programs = {
@@ -83,52 +78,27 @@ in
         enable = true;
         enableZshIntegration = true;
         git = true;
-        theme = builtins.readFile ./eza/catppuccin.yml;
         colors = "always";
       };
 
-      foot = {
+      kitty = {
         enable = true;
-        settings = {
-          main = {
-            font = "IosevkaTerm Nerd Font:size=11";
-            dpi-aware = "yes";
-            title = "shell";
-            term = "foot";
-          };
-          colors = {
-            alpha = 0.9;
-            cursor = "11111b f5e0dc";
-            foreground = "cdd6f4";
-            background = "1e1e2e";
-            regular0 = "45475a";
-            regular1 = "f38ba8";
-            regular2 = "a6e3a1";
-            regular3 = "f9e2af";
-            regular4 = "89b4fa";
-            regular5 = "f5c2e7";
-            regular6 = "94e2d5";
-            regular7 = "bac2de";
-            bright0 = "585b70";
-            bright1 = "f38ba8";
-            bright2 = "a6e3a1";
-            bright3 = "f9e2af";
-            bright4 = "89b4fa";
-            bright5 = "f5c2e7";
-            bright6 = "94e2d5";
-            bright7 = "a6adc8";
-            "16" = "fab387";
-            "17" = "f5e0dc";
-            selection-foreground = "cdd6f4";
-            selection-background = "414356";
-            search-box-no-match = "11111b f38ba8";
-            search-box-match = "cdd6f4 313244";
-            jump-labels = "11111b fab387";
-            urls = "89b4fa";
-          };
+        font = {
+          name = "IosevkaTerm Nerd Font";
+          package = pkgs.nerd-fonts.iosevka-term;
+          size = 16;
         };
+        settings = {
+          enable_audio_bell = false;
+          background_opacity = 0.9;
+          background_blur = 1;
+        };
+        shellIntegration = {
+          enableZshIntegration = true;
+        };
+        enableGitIntegration = true;
+        themeFile = "Catppuccin-Mocha";
       };
-
       zsh = {
         enable = true;
         initContent = builtins.readFile ./zsh/init-content.zsh;

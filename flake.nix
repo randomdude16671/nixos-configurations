@@ -3,7 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    catppuccin.url = "github:catppuccin/nix";
+    fontman = {
+      url = "github:randomdude16671/fontman";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     neovim.url = "github:nix-community/neovim-nightly-overlay";
+    agenix.url = "github:ryantm/agenix";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,10 +26,6 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -31,11 +33,13 @@
       self,
       nixpkgs,
       home-manager,
-      stylix,
       volt-build,
       nur,
       neovim,
+      agenix,
       zen-browser,
+      fontman,
+      catppuccin,
       ...
     }@inputs:
     let
@@ -55,6 +59,8 @@
         specialArgs = { inherit inputs; };
         modules = [
           nur.modules.nixos.default
+          fontman.nixosModules.fontman
+          catppuccin.nixosModules.catppuccin
           {
             programs.neovim = {
               package = pkgs.neovim;
@@ -72,10 +78,13 @@
               users.ghost = {
                 home.packages = [
                   volt-build.packages."${system}".default
+                  agenix.packages."${system}".default
                 ];
                 imports = [
                   ./ghost.nix
+                  agenix.homeManagerModules.default
                   zen-browser.homeModules.beta # get the programs.zen-browser module into HM
+                  catppuccin.homeModules.catppuccin
                 ];
               };
             };

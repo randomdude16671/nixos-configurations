@@ -11,7 +11,7 @@
 - `modules/home` – Home-manager modules
 - `modules/ghost` – Custom config modules (shell, terminal, etc)
 - `modules/scripts` – Shell scripts used in `ghost`
-- `modules/wallpapers` – Backgrounds for use with Stylix
+- `modules/wallpapers` – Backgrounds for use.
 
 > *Note: you'll see the nickname `ghost` used throughout this config. It's mine.*
 
@@ -24,7 +24,7 @@
 | OS              | NixOS Unstable (flakes)          |
 | WM              | Sway + autotiling-rs (master stack) |
 | Terminal        | Kitty               |
-| Theme           | Catppuccin Mocha via Stylix      |
+| Theme           | Catppuccin Mocha       |
 | Font            | Iosevka Term Nerd Font                     |
 | Shell           | Zsh (no framework, fully custom) |
 | App Launcher    | Rofi                             |
@@ -42,14 +42,12 @@
 ├── ghost.nix
 ├── modules
 │   ├── ghost
-│   │   ├── bat
-│   │   │   └── catppuccin.tmTheme
 │   │   ├── browser.nix
 │   │   ├── default.nix
 │   │   ├── dev.nix
 │   │   ├── rofi
-│   │   │   ├── ctp-rofi.rasi
-│   │   │   └── rofi.rasi
+│   │   │   ├── rofi.rasi
+│   │   │   └── wallpapers.sh
 │   │   ├── shell-scripts.nix
 │   │   ├── terminal.backups
 │   │   │   ├── foot.ini
@@ -59,21 +57,28 @@
 │   │   │   └── vim-tmux-navigator.tmux
 │   │   ├── vesktop.nix
 │   │   └── zsh
-│   │       ├── ctp_mocha.zsh
+│   │       ├── async.zsh
+│   │       ├── ctp-mocha.zsh
 │   │       ├── git-zsh.zsh
-│   │       └── initContent.zsh
+│   │       ├── init-content.zsh
+│   │       └── specter.zsh-theme
 │   ├── home
+│   │   ├── bar.nix
 │   │   ├── default.nix
 │   │   ├── general.nix
 │   │   ├── swaync.nix
-│   │   ├── swaync-style.css
-│   │   └── sway.nix
+│   │   ├── sway.nix
+│   │   └── waybar
+│   │       ├── config.json
+│   │       └── style.css
 │   ├── nixos
 │   │   ├── bluetooth.nix
 │   │   ├── boot.nix
+│   │   ├── catppuccin.nix
 │   │   ├── configuration.nix
 │   │   ├── default.nix
 │   │   ├── dm-de.nix
+│   │   ├── fontman.nix
 │   │   ├── gnupg.nix
 │   │   ├── hardware-configuration.nix
 │   │   ├── hardware.nix
@@ -81,13 +86,16 @@
 │   │   ├── man.nix
 │   │   ├── nix.nix
 │   │   ├── pipewire-wireplumber.nix
+│   │   ├── plymouth.nix
 │   │   ├── security.nix
 │   │   ├── some-services.nix
-│   │   ├── stylix.nix
+│   │   ├── steam.nix
 │   │   ├── syncthing.nix
 │   │   ├── systemPackages.nix
 │   │   ├── user.nix
 │   │   └── virtualization.nix
+│   ├── pkgs
+│   │   └── catppuccin-mocha.nix
 │   ├── scripts
 │   │   ├── i3-tile.sh
 │   │   ├── install_neovim.sh
@@ -101,14 +109,23 @@
 │   │   └── swayidle.sh
 │   └── wallpapers
 │       ├── after.png
+│       ├── castle.png
+│       ├── clouds.jpg
+│       ├── evening.png
+│       ├── gradient.png
+│       ├── nightClouds.jpg
 │       ├── nix.png
 │       ├── romb.png
 │       ├── to.jpg
-│       └── warrior.png
+│       ├── warrior.png
+│       └── waves.png
 ├── README.md
-└── screenshots
-    └── latest.png
+├── screenshots
+│   └── latest.png
+└── secrets
+    ├── japan.nmconnection.age
+    └── secrets.nix
 
-13 directories, 59 files
+15 directories, 74 files
 ```
 

@@ -55,6 +55,10 @@ in
         source = ./../scripts/sesh_session_switch.sh;
         executable = true;
       };
+      "scripts/wallpapers.sh" = {
+        source = ./rofi/wallpapers.sh;
+        executable = true;
+      };
     };
   };
 }

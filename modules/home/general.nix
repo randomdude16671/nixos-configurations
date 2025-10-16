@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   home.packages = [
     pkgs.i3status
@@ -6,26 +11,21 @@
     pkgs.imv
     pkgs.wl-clipboard
     pkgs.proton-pass
+    pkgs.imagemagick # for images in neovim and stuff
     pkgs.proton-authenticator
-    pkgs.notesnook
   ];
-  gtk = {
+  catppuccin = {
     enable = true;
-    iconTheme = {
-      name = "Adwaita-dark";
-      package = pkgs.adwaita-icon-theme;
-    };
+    flavor = "mocha";
+    accent = "blue";
   };
   programs.btop.enable = true;
 
-  # cuztom stylix shitze.
-  stylix = {
-    targets = {
-      qt.enable = true;
-      fzf.enable = false;
-      zen-browser.enable = false;
-      foot.enable = false;
-      vesktop.enable = false;
+  gtk = {
+    enable = true;
+    theme = {
+      package = pkgs.magnetic-catppuccin-gtk;
+      name = "Catppuccin-GTK-Dark";
     };
   };
 }

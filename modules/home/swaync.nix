@@ -35,7 +35,6 @@
         };
         "mpris" = {
           image-size = 96;
-          image-radius = 7;
         };
         "volume" = {
           label = "󰴸 ";
@@ -45,6 +44,5 @@
         };
       };
     };
-    style = builtins.readFile ./swaync-style.css;
   };
 }
