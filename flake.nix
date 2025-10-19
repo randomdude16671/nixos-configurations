@@ -14,10 +14,6 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    volt-build = {
-      url = "github:volt-build/volt-build/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +29,6 @@
       self,
       nixpkgs,
       home-manager,
-      volt-build,
       nur,
       neovim,
       agenix,
@@ -77,7 +72,6 @@
               backupFileExtension = "old.hm.bak";
               users.ghost = {
                 home.packages = [
-                  volt-build.packages."${system}".default
                   agenix.packages."${system}".default
                 ];
                 imports = [
