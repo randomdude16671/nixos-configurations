@@ -1,0 +1,37 @@
+{
+	"init": {
+		"prefix": "init", 
+		"body": [ 
+			"#include <stdio.h>", 
+			"",
+			"int main()",
+			"{",
+			"\tprintf(\"Hello, world\n\");",
+			"\treturn 0;", 
+			"}", 
+			""
+		] 
+	}, 
+	
+	"header": {
+		"prefix": "header", 
+		"body": [
+			"#ifndef ${1:HEADER}_H_", 
+			"#define $1_H_",
+			"", 
+			"#endif // $1_H_"
+		]
+	}, 
+
+	"func": {
+		"prefix": "func", 
+		"body": [
+			"void ${1:func}()", 
+			"{", 
+			"\t${2: // code}",
+			"}",
+			""
+		]
+	}
+}
+

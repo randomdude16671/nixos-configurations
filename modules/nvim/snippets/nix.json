@@ -1,0 +1,19 @@
+{
+  "flake": {
+    "prefix": "flake",
+    "body": [
+      "{",
+      "  description = \"${1:my-flake}\";",
+      "",
+      "  inputs = {",
+      "    nixpkgs.url = \"github:NixOS/nixpkgs/nixpkgs-unstable\";",
+      "  };",
+      "",
+      "  outputs = { self, nixpkgs }: {",
+      "    ${0:}",
+      "  };",
+      "}"
+    ],
+    "description": "Minimal Nix flake with nixpkgs input"
+  }
+}

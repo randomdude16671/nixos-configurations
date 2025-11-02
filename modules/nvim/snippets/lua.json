@@ -1,0 +1,32 @@
+{
+	"plugin": {
+		"prefix": "plugin", 
+		"body": [ 
+			"local M = {}", 
+			"",
+			"function M.${1:setup}()",
+			"\t${0:}",
+			"end", 
+			"", 
+			"return M"
+		] 
+	}, 
+	
+	"plugin_function": {
+		"prefix": "plugin_func", 
+		"body": [
+			"function M.${1:func_name}()", 
+			"\t${0:}",
+			"end"
+		]
+	}, 
+
+	"function": {
+		"prefix": "function", 
+		"body": [
+			"function ${1:}()", 
+			"\t${0:}", 
+			"end"
+		]
+	}
+}
